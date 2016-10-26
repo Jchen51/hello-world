@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+
+
+
+
+body {background-color:powderblue;}
+h1 {font-family:Comic;}
+
+</style>
+
+  <div class="main">
+  <!--<div class="top">-->
+  <h1 style="font-family:Comic Sans MS"><center>GradTrak</center></h1>
+  <!--</div>-->
+  <div class="entry">
+    <center>
+    <form>
+      Enter a class:<br>
+      <input type="text" id="userin1"><br>
+      <input type="text" id="userin2"><br>
+      <button onclick="add()">Add</button>
+      <button onclick="remove()">Remove</button>
+      <button onclick="listCookies()">Test</button>
+
+      <!--<input type="radio" name="type" value="Add">Add<br>
+      <input type="radio" name="type" value="Remove">Remove<br>
+      <button onclick="submit()">Submit</button>-->
+    </form>
+  </center>
+
+
+
+
+    </div>
+    <div class="classes">
+      <center>
+        <table id="myTable" border="0">
+  <!--<tr>
+    <td>cell 1</td>
+    <td>cell 2</td>
+  </tr>
+  <tr>
+    <td>cell 3</td>
+    <td>cell 4</td>
+  </tr>-->
+
+  <script>
+  var tableContent = "";
+
+for (index = 0; index < enteredStrings.length; index++) {
+    tableContent += "<tr><td>" + enteredStrings[index] + "</td>"
+
+    + "<td>" + enteredStringsTwo[index] + "</td></tr>";
+
+    nameCounter++;
+    total.innerHTML = "Total: " + nameCounter;
+}
+output.innerHTML = tableContent;
+  </script>
+
+</table>
+    </center>
+  </div>
+
+<style>
+
+</style>
+
+
+<!-- Arrays needed:
+  COEN - an array of all COEN normal requirements 16 w/ senior design
+  COENE - COEN electives 3
+  MATHSCI - an array of all MATH/SCI normal requirements
+  MATHSCIM - math/sci req with multiple choices
+  CANDI1,CANDI2,CANDI3,CTW1,CTW2,RTC1,RTC2,RTC3
+  ETHICS,DIVERSITY,SOCIALSCIENCE,ELSJ
+  EDEN - educational enrichment
+-->
+
+<!--functions-->
+<script>
+
+//arrays of the requirements, and all the classes that satisfy them
+var coen10={"COEN10"};
+var coen11={"COEN11"};
+var coen12={"COEN12"};
+var coen19={"COEN19"};
+var coen20={"COEN20"};
+var coen21={"COEN21"};
+var coen70={"COEN70"};
+var coen122={"COEN122"};
+var coen146={"COEN146"};
+var coen174={"COEN174"};
+var coen175={"COEN175"};
+var coen177={"COEN177"};
+var coen179={"COEN179"};
+var coen194={"COEN194"};
+var coen195={"COEN195"};
+var coen196={"COEN196"};
+var engr1={"ENGR1"};
+var elen50={"ELEN50"};
+var elen153={"ELEN153"};
+var socialscience={"ECON1","POLYSCI2"}
+//array of pointers to all other arrays
+//needs to be finished
+var all={coen10,coen11,coen12,coen19,coen20,coen21,coen70,coen122,coen146,coen174,coen175,coen177,coen179,coen194,coen195,coen196,engr1,elen50,elen153};
+
+//for displaying the text
+//when complete, strikethrough
+var alltext={"COEN10","COEN11","SOCIAL SCIENCE"};
+
+
+//user's entered values
+//if a user enters a class, and the class fits
+//add 1 to that specific value
+//>1 means that at least one class satisfies the req.
+var user = new Array(49+1).join('0').split('').map(parseFloat);
+
+//contains all classes user has entered (no reentry)
+var history=new Array(1000);
+
+//contains all extra classes
+var extra=new Array(100);
+
+function checkCookie(){
+
+}
+
+function listCookies() {
+    var theCookies = document.cookie.split(';');
+    var aString = '';
+    for (var i = 1 ; i <= theCookies.length; i++) {
+        aString += i + ' ' + theCookies[i-1] + "\n";
+    }
+    alert(aString);
+}
+
+function test(){
+  /*for(var i = 0; i < 2;i++){
+    var str=alltext[i];
+    if (user[i]>0){
+      str.strike();
+    }
+    str=out;
+  }*/
+
+
+
+
+}
+
+function add(){
+  var userInput = document.getElementById("userInput").value;
+  userInput = toUpperCase();
+  userInput = userInput.replace(/\s+/g,'');
+
+  document.cookie="class="+userInput;
+  //setCookie("username",userInput,30);
+  //checkCookie();
+}
+function remove(){
+  var userInput = document.getElementById("userInput").value;
+  userInput = toUpperCase();
+  userInput = userInput.replace(/\s+/g,'');
+}
+
+function makeTableHTML(myArray) {
+    var result = "<table border=1>";
+    for(var i=0; i<myArray.length; i++) {
+        result += "<tr>";
+        for(var j=0; j<myArray[i].length; j++){
+            result += "<td>"+myArray[i][j]+"</td>";
+        }
+        result += "</tr>";
+    }
+    result += "</table>";
+
+    return result;
+}
+
+//check what req. the entry is
+function reqadd(entry){
+  var flag = false;
+  for (var i=0;i<49;i++){
+    for(var j=0;j<all[i].length;j++){
+      if(entry==all[i][j]){
+        user[i]++;
+        flag=true;
+      }
+    }
+  }
+  if (flag==false){
+    extra.push(entry);
+  }
+}
+
+function reqrem(entry){
+  var flag = false;
+  for (var i=0;i<49;i++){
+    for(var j=0;j<all[i].length;j++){
+      if(entry==all[i][j] && user[i]>0){
+        user[i]--;
+        flag=true;
+      }
+    }
+  }
+  if (flag==false){
+    if(extra.includes(entry)){
+      //remove element from array
+    }
+  }
+}
+
+</script>
+
+<!--
+<br>
+<blockquote>
+For <mark>50</mark> years, <del>WWF</del> has been protecting the future of nature.
+The world's leading conservation organization,
+WWF works in 100 countries <address>and is supported by
+1.2 million members</address> in the United States and
+close to 5 million globally.
+</blockquote>-->
+
+</body>
+</html>

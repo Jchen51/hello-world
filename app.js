@@ -1,10 +1,11 @@
 /*
 
-Implemented October 30th
-GRAD TRAK PROJECT
-By Jowy Curameng
-
+PROTOTYPE HALLOWEEN VERSION
+GRADTRAK
+APP.JS
+VERSION MANY.0
 */
+
 //MAJOR
 var COEN_MAJOR = ["COEN10", "COEN11","COEN12", "COEN19", "COEN20", "COEN21", "COEN70", "COEN122", "COEN146","COEN 171", "COEN 174", "COEN 175", "COEN177", "COEN179", "COEN194", "COEN195", "COEN196"];
 var COEN_UPPERDIV_ELECTIVES = ["COEN120","COEN123", "COEN129", "COEN152", "COEN160", "COEN161", "COEN162", "COEN163", "COEN164", "COEN165","COEN166", "COEN169", "COEN178","COEN180"];
@@ -28,38 +29,38 @@ var cni3=["ANTH50","ANTH152","ANTH156","ANTH172","ANTH181","ANTH184","ANTH185","
 var sosh=["ANTH2","ANTH3","ANTH196","CLAS172","ECON1","ECON1E","ECON2","ECON129BF","HIST107","LBST100","POLI2","POLI40","POLI99","POLI134","POLI140","POLI143","POLI145","PSYC1","PSYC2","SOCI1"];
 var diversity=["ANTH146","ANTH148","ANTH149","ANTH157","ANTH170","ARTH140","ARTH143","ARTH146","ARTH185","COMM107A","COMM121A","COMM164A","COMM168A","DANC62","DANC162","DANC66","DANC166","ECON166","ENGL31G","ENGL35","ENGL35G","ENGL36","ENGL38","ENGL39","ENGL67","ENGL68","ENGL69","ENGL79G","ENGL122","ENGL122AW","ENGL125","ENGL129","ENGL132G","ENGL135","ENGL136","ENGL138","ENGL152","ETHN5","ETHN10","ETHN20","ETHN30","ETHN35","ETHN36","ETHN40","ETHN41","ETHN50","ETHN51","ETHN65","ETHN70","ETHN95","ETHN96","ETHN120","ETHN123","ETHN125","ETHN130","ETHN132","ETHN134","ETHN135","ETHN139","ETHN141","ETHN142","ETHN144","ETHN145","ETHN149","ETHN152","ETHN153","ETHN154","ETHN155","ETHN156","ETHN157","ETHN160","ETHN161","ETHN162","ETHN163","ETHN165","ETHN178","HIST84","HIST153","HIST156A","HIST156B","HIST158","HIST172","HIST177","HIST178","HIST180","HIST181","HIST182","HIST183","HIST185","HIST187","HIST188S","ITAL185","LEAD10","LBST106","MUSC20","MUSC132","MUSC134","MUSC196","PHIL70","PHIL156","POLI134","POLI153","POLI154","POLI171","POLI195DW","PSYC156","PSYC182","PSYC189","PSYC196","SOCI33","SOCI150","SOCI153","SOCI162","SOCI175","SOCI180","SPAN176","THTR65","THTR151","THTR161","TESP65","WGST14","WGST15","WGST34","WGST50","WGST51","WGST56","WGST57","WGST101","WGST110","WGST111","WGST112","WGST113","WGST114","WGST115","WGST116","WGST117","WGST118","WGST134","WGST134AW","WGST136","WGST138","WGST144","WGST155","WGST156","WGST163","WGST164","WGST173","WGST174","WGST180","WGST188"];
 
+/*Function: Add row
+Info: Formats or invalidates certain inputs. Iterates through a variety of arrays
+Populates table and creates row with a delete button.
+*/
 function addRow() {
 
 
-    //var TakenClass = document.getElementById("name");
-    //alert(typeof TakenClass);
     var i,filter_flag;
-
     filter_flag = 1;
 
 
-    //turn everything into 4char1-3int format
+    //Turns input into 4char1-3int format
     var userInput = document.getElementById("name").value;
     userInput = userInput.toUpperCase();
     TakenClass = userInput.replace(/\s+/g,'');
-    alert(TakenClass);
 
-    //is it too long?
+    //Checks if the input is too long
     if ((TakenClass.length > 7) || (TakenClass.length < 5)){
       alert("Invalid entry");
       return false;
     }
 
-    //is it an invalid class?
+    //Checks if it's in a valid class
     var re = /\w{4}/;
     //var re = /[a-zA-Z]+/;
 
-    //which department is it?
+    //Checks department
     var classtype = TakenClass.match(re);
-    alert(classtype);
+    //alert(classtype);
     classtype = classtype.toString();
 
-    //which course number?
+    //Checks course number
     var re2 = /\d+/;
     var classnum = TakenClass.match(re2);
 
@@ -68,13 +69,14 @@ function addRow() {
       alert("Invalid entry");
     }
 
+    var table, row, rowCount, row;
 
-//ITERATE THROUGH ALL ENGR ARRAYS
+//Case 1: Major Classes
 for(i=0; i<COEN_MAJOR.length; i++)
 {
     if(COEN_MAJOR[i]==TakenClass)
     {
-        var table = document.getElementById("majorclassestable");
+        table = document.getElementById("majorclassestable");
         filter_flag=0;
     }
 }
@@ -84,8 +86,9 @@ for(i=0; i<COEN_UPPERDIV_ELECTIVES.length; i++)
 
     if(COEN_UPPERDIV_ELECTIVES[i]==TakenClass)
     {
-        var table = document.getElementById("majorclassestable");
+        table = document.getElementById("majorclassestable");
         filter_flag=0;
+
     }
 }
 
@@ -94,7 +97,7 @@ for(i=0; i<writing.length; i++)
 
     if(writing[i]==TakenClass)
     {
-        var table = document.getElementById("majorclassestable");
+        table = document.getElementById("majorclassestable");
         filter_flag=0;
     }
 }
@@ -106,6 +109,7 @@ for(i=0; i<math.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
+
     }
 }
 
@@ -114,19 +118,18 @@ for(i=0; i<sci.length; i++)
 
     if(sci[i]==TakenClass)
     {
-        var table = document.getElementById("majorclassestable");
+        table = document.getElementById("majorclassestable");
         filter_flag=0;
-    }
+      }
 }
-//END MAJOR ARRAYS
+//End Case 1:
 
-//BEGIN CORE CLASSES
-
+//Case 2: Core Classes
 for(i=0; i<civic.length; i++)
 {
     if(civic[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+      table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -135,7 +138,7 @@ for(i=0; i<arts.length; i++)
 {
     if(arts[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -144,7 +147,7 @@ for(i=0; i<sts.length; i++)
 {
     if(sts[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -153,7 +156,7 @@ for(i=0; i<ctw1.length; i++)
 {
     if(ctw1[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -162,7 +165,7 @@ for(i=0; i<ctw2.length; i++)
 {
     if(ctw2[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -171,7 +174,7 @@ for(i=0; i<rtc1.length; i++)
 {
     if(rtc1[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -179,7 +182,7 @@ for(i=0; i<rtc2.length; i++)
 {
     if(rtc2[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -188,7 +191,7 @@ for(i=0; i<rtc3.length; i++)
 {
     if(rtc3[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -197,7 +200,7 @@ for(i=0; i<elsj.length; i++)
 {
     if(elsj[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -206,7 +209,7 @@ for(i=0; i<ethics.length; i++)
 {
     if(ethics[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -215,7 +218,7 @@ for(i=0; i<cni1.length; i++)
 {
     if(cni1[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -224,7 +227,7 @@ for(i=0; i<cni2.length; i++)
 {
     if(cni1[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -233,7 +236,7 @@ for(i=0; i<cni3.length; i++)
 {
     if(cni1[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -242,7 +245,7 @@ for(i=0; i<sosh.length; i++)
 {
     if(sosh[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -251,76 +254,54 @@ for(i=0; i<diversity.length; i++)
 {
     if(diversity[i]==TakenClass)
     {
-        var table = document.getElementById("coreclassestable");
+        table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
-//END CORE CLASSES
+//End Case 2
 
+//Case 3: Filtered/Educational Enrichment
 if(filter_flag==1)
 {
-    var table = document.getElementById("filteredclassestable");
+    table = document.getElementById("filteredclassestable");
+
 }
 
 
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
-
-    row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
-
-    //CASES SEARCH THROUGH ARRAY
-    row.insertCell(1).innerHTML= TakenClass;
+//Populates the table with a delete button and the class taken
+var rowCount = table.rows.length;
+var row = table.insertRow(rowCount);
+row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+row.insertCell(1).innerHTML= TakenClass;
 }
 
-
+/*Function: deleteRow
+Takes in the HTML Button. Accesses its many many many parents to find the table id.
+Compares the id to 3 cases.
+Deletes the HTML Button's row's index
+*/
 function deleteRow(obj) {
 
     var index = obj.parentNode.parentNode.rowIndex;
-    //if()
-        var table = document.getElementById("majorclassestable");
-    //if()
-        var table = document.getElementById("coreclassestable");
-    //if()
-        var table = document.getElementById("majorclassestable");
+    var table;
 
+    //Case 1: Major Classes
+    if(obj.parentNode.parentNode.parentNode.parentNode.id == "majorclassestable")
+    {
+      table = document.getElementById("majorclassestable");
+    }
+
+    //Case 2: Core Classes
+    if(obj.parentNode.parentNode.parentNode.parentNode.id=="coreclassestable")
+    {
+     table = document.getElementById("coreclassestable");
+    }
+
+    //Case 3: Major Classes
+    if(obj.parentNode.parentNode.parentNode.parentNode.id=="filteredclassestable")
+    {
+      table = document.getElementById("filteredclassestable");
+    }
 
     table.deleteRow(index);
-
 }
-
-
-/*function tabletype() {
-
-}*/
-
-function load() {
-
-    console.log("Page load finished");
-
-}
-
-/*
-function checkArray(TakenClass)
-{
-     if(COEN_MAJOR[0]==TakenClass)
-    {
-      var table = document.getElementById("majorclassestable");
-    }
-
-    else if("test"==TakenClass)
-    {
-      var table = document.getElementById("coreclassestable");
-    }
-
-    else
-    {
-      var table = document.getElementById("filteredclassestable");
-    }
-
-    return table;
-    /*
-    for (var i = 0; i<COEN_MAJOR.length; i++)
-    {
-        if(COEN)
-    }
-} */

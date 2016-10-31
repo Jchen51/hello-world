@@ -66,7 +66,6 @@ function addRow() {
     //if it is a valid type of department and a number between 1 and 200
     if (((classtype != "COEN") && (classtype != "ELEN") && (classtype != "ENGR") && (classtype != "ENGL") && (classtype != "MATH") && (classtype != "AMTH") && (classtype != "PHYS") && (classtype != "CHEM") && (classtype != "RSOC") && (classtype != "SCTR") && (classtype != "TESP") && (classtype != "MGMT") && (classtype != "PHIL") && (classtype != "PHSC") && (classtype != "PSYC") && (classtype != "WGST") && (classtype != "ANTH") && (classtype != "ARTH") && (classtype != "COMM") && (classtype != "DANC") && (classtype != "ECON") && (classtype != "ETHN") && (classtype != "HIST") && (classtype != "ITAL") && (classtype != "LEAD") && (classtype != "LBST") && (classtype != "MUSC") && (classtype != "POLI") && (classtype != "SOCI") && (classtype != "SPAN") && (classtype != "THTR") && (classtype != "CLAS") && (classtype != "ARAB") && (classtype != "ENVS") && (classtype != "FREN") && (classtype != "BIOL") && (classtype != "BUSN") && (classtype != "INTL") && (classtype != "ELSJ") && (classtype != "ARTS") && (classtype != "GERM")) || ((Number(classnum) < 1 ) || (Number(classnum) > 200))){
       alert("Invalid entry");
-      return false;
     }
 
 

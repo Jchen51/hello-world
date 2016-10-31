@@ -501,6 +501,11 @@ function deleteRow(obj) {
 
   var temp = table.rows[index].cells[1].innerHTML;
   table.deleteRow(index);
+    
+  if(entered.indexOf(temp) != -1){
+    var x = entered.indexOf(temp);
+    entered.splice(x,1);
+  }
 
   for(var i = 0; i < 46; i++){
     if(user[i].length!= 0){

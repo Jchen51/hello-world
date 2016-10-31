@@ -468,7 +468,7 @@ if(filter_flag==1)
 
   var json_user = JSON.stringify(user);
 
-  createCookie("myArray",json_user);
+  createCookie("myArray",json_user,7);
 
 
   displayreq();
@@ -516,6 +516,9 @@ function deleteRow(obj) {
       }
     }
   }
+  var json_user = JSON.stringify(user);
+
+  createCookie("myArray",json_user,7);
 
   displayreq();
 

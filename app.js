@@ -28,6 +28,66 @@ var cni3=["ANTH50","ANTH152","ANTH156","ANTH172","ANTH181","ANTH184","ANTH185","
 var sosh=["ANTH2","ANTH3","ANTH196","CLAS172","ECON1","ECON1E","ECON2","ECON129BF","HIST107","LBST100","POLI2","POLI40","POLI99","POLI134","POLI140","POLI143","POLI145","PSYC1","PSYC2","SOCI1"];
 var diversity=["ANTH146","ANTH148","ANTH149","ANTH157","ANTH170","ARTH140","ARTH143","ARTH146","ARTH185","COMM107A","COMM121A","COMM164A","COMM168A","DANC62","DANC162","DANC66","DANC166","ECON166","ENGL31G","ENGL35","ENGL35G","ENGL36","ENGL38","ENGL39","ENGL67","ENGL68","ENGL69","ENGL79G","ENGL122","ENGL122AW","ENGL125","ENGL129","ENGL132G","ENGL135","ENGL136","ENGL138","ENGL152","ETHN5","ETHN10","ETHN20","ETHN30","ETHN35","ETHN36","ETHN40","ETHN41","ETHN50","ETHN51","ETHN65","ETHN70","ETHN95","ETHN96","ETHN120","ETHN123","ETHN125","ETHN130","ETHN132","ETHN134","ETHN135","ETHN139","ETHN141","ETHN142","ETHN144","ETHN145","ETHN149","ETHN152","ETHN153","ETHN154","ETHN155","ETHN156","ETHN157","ETHN160","ETHN161","ETHN162","ETHN163","ETHN165","ETHN178","HIST84","HIST153","HIST156A","HIST156B","HIST158","HIST172","HIST177","HIST178","HIST180","HIST181","HIST182","HIST183","HIST185","HIST187","HIST188S","ITAL185","LEAD10","LBST106","MUSC20","MUSC132","MUSC134","MUSC196","PHIL70","PHIL156","POLI134","POLI153","POLI154","POLI171","POLI195DW","PSYC156","PSYC182","PSYC189","PSYC196","SOCI33","SOCI150","SOCI153","SOCI162","SOCI175","SOCI180","SPAN176","THTR65","THTR151","THTR161","TESP65","WGST14","WGST15","WGST34","WGST50","WGST51","WGST56","WGST57","WGST101","WGST110","WGST111","WGST112","WGST113","WGST114","WGST115","WGST116","WGST117","WGST118","WGST134","WGST134AW","WGST136","WGST138","WGST144","WGST155","WGST156","WGST163","WGST164","WGST173","WGST174","WGST180","WGST188"];
 
+
+//cookiestuff
+function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    alert(name);
+    alert(value);
+    alert(days);
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+
+
+
+function listCookies() {
+    var theCookies = document.cookie.split(';');
+    var aString = '';
+    for (var i = 1 ; i <= theCookies.length; i++) {
+        aString += i + ' ' + theCookies[i-1] + "\n";
+    }
+    alert(aString);
+}
+
+
+
+
+//ADDROW
 function addRow() {
 
 
@@ -60,7 +120,7 @@ function addRow() {
     classtype = classtype.toString();
 
     //which course number?
-    var re2 = /\d+/;
+    var re2 = /\d+[\w{1}]*/;
     var classnum = TakenClass.match(re2);
 
     //if it is a valid type of department and a number between 1 and 200
@@ -287,6 +347,100 @@ row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Jav
 row.insertCell(1).innerHTML= TakenClass;
 
 
+    if((classtype=="COEN") || (classtype=="ELEN")){
+    if(COEN_MAJOR.indexOf(TakenClass) != -1){
+      var x = COEN_MAJOR.indexOf(TakenClass);
+      user[x].push(TakenClass);
+    }
+    else if (elen.indexOf(TakenClass) != -1){
+      var x = elen.indexOf(TakenClass);
+      user[x+16].push(TakenClass);
+    }
+    //needs to have 3
+    else if(COEN_UPPERDIV_ELECTIVES.indexOf(TakenClass) != -1){
+      user[19].push(TakenClass);
+    }
+  }else {
+    if ((classtype=="ENGL") && (classnum==181)){
+      user[20].push(TakenClass);
+    }
+    else if (classtype=="MATH"){
+      if((classnum==53)||(classnum==166)){
+        user[27].push(TakenClass);
+      }
+      else if(classnum==122){
+        user[26].push(TakenClass);
+      }
+      else{
+        user[classnum+10].push(TakenClass);
+      }
+    }
+    else if (classtype=="AMTH"){
+      if(classnum==106){
+        user[25].push(TakenClass);
+      }
+      else if (classnum == 108){
+        user[26].push(TakenClass);
+      }
+      else if (classnum == 118){
+        user[27].push(TakenClass);
+      }
+    }
+    else if (classtype=="PHYS"){
+      user[classnum-3].push(TakenClass);
+    }
+    else if (classtype=="CHEM"){
+      user[31].push(TakenClass);
+    }
+    else if ((classtype=="ENGR") && (classnum == 1)){
+      user[32].push(TakenClass);
+    }
+    else {
+      if (ctw1.indexOf(TakenClass) != -1){
+        user[33].push(TakenClass);
+      }
+      if (ctw2.indexOf(TakenClass) != -1){
+        user[34].push(TakenClass);
+      }
+      if (rtc1.indexOf(TakenClass) != -1){
+        user[35].push(TakenClass);
+      }
+      if (rtc2.indexOf(TakenClass) != -1){
+        user[36].push(TakenClass);
+      }
+      if (rtc3.indexOf(TakenClass) != -1){
+        user[37].push(TakenClass);
+      }
+      if (elsj.indexOf(TakenClass) != -1){
+        user[38].push(TakenClass);
+      }
+      if (ethics.indexOf(TakenClass) != -1){
+        user[39].push(TakenClass);
+      }
+      if (cni1.indexOf(TakenClass) != -1){
+        user[40].push(TakenClass);
+      }
+      if (cni2.indexOf(TakenClass) != -1){
+        user[41].push(TakenClass);
+      }
+      if (cni3.indexOf(TakenClass) != -1){
+        user[42].push(TakenClass);
+      }
+      if (sosh.indexOf(TakenClass) != -1){
+        user[43].push(TakenClass);
+      }
+      if (diversity.indexOf(TakenClass) != -1){
+        user[44].push(TakenClass);
+      }
+    }
+  }
+    
+ var json_user = JSON.stringify(user);
+
+  createCookie("myArray",json_user);
+    
+    displayreq();
+    
 }
 
 
@@ -342,15 +496,17 @@ function deleteRow(obj) {
 }
 
 
+
 /*function tabletype() {
 
 }*/
 
+/*
 function load() {
 
     console.log("Page load finished");
 
-}
+}*/
 
 /*
 function checkArray(TakenClass)

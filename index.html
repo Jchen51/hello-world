@@ -7,6 +7,23 @@
     <script type="text/javascript" scr="config.js"></script>
     <script type="text/javascript" src="app.js"></script> 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    if (document.cookie.indexOf("myArray") >=0){
+      alert("Hello");
+      var json_user = getCookie("myArray");
+      var user=JSON.parse(json_user);
+      for(var i = 0; i < 45; i++){
+        if(user[i].length!= 0){
+          alert(i);
+          for(var j = 0 ; j < user[i].length; j++){
+            alert(user[i][j] + ',');
+          }
+        }
+      }
+    }else {
+      var user = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+    }
+    </script>
 </head>
 <style>
 body {background-color:powderblue;}
@@ -59,7 +76,12 @@ h1 {font-family:Arial;}
 </div>
 <!--END: FILTERED CLASSES-->
 
-
+<div id="Final Requirements">
+  You still must fufill:<br>
+  <table id="finalreq">
+    <script>displayreq();</script>
+  </table>
+</div>
 
 
 

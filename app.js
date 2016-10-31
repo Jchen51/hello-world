@@ -691,10 +691,6 @@ if(user[37].length == 0){
    var temp = finalreq.insertRow(0);
    temp.innerHTML = "COEN19";
  }
- if(user[3].length == 0){
-   var temp = finalreq.insertRow(0);
-    temp.innerHTML = "COEN19";
- }
   if(user[2].length == 0){
     var temp = finalreq.insertRow(0);
     temp.innerHTML = "COEN12";

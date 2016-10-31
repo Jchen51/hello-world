@@ -3,7 +3,7 @@
 PROTOTYPE HALLOWEEN VERSION
 GRADTRAK
 APP.JS
-VERSION MANY.0
+VERSION MANY.01
 */
 
 //MAJOR
@@ -70,6 +70,16 @@ function addRow() {
     }
 
     var table, row, rowCount, row;
+
+    //ENTER DOESN'T CLEAR ANYMORE
+    document.getElementById("add")
+        .addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode == 13) {
+            document.getElementById("id_of_button").click();
+        }
+    });
+
 
 //Case 1: Major Classes
 for(i=0; i<COEN_MAJOR.length; i++)
@@ -273,6 +283,8 @@ var rowCount = table.rows.length;
 var row = table.insertRow(rowCount);
 row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
 row.insertCell(1).innerHTML= TakenClass;
+
+//Set Localstorage
 }
 
 /*Function: deleteRow

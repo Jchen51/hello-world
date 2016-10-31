@@ -42,7 +42,7 @@ function addRow() {
     var userInput = document.getElementById("name").value;
     userInput = userInput.toUpperCase();
     TakenClass = userInput.replace(/\s+/g,'');
-    alert(TakenClass);
+   // alert(TakenClass);
 
     //is it too long?
     if ((TakenClass.length > 7) || (TakenClass.length < 5)){
@@ -56,7 +56,7 @@ function addRow() {
 
     //which department is it?
     var classtype = TakenClass.match(re);
-    alert(classtype);
+    //alert(classtype);
     classtype = classtype.toString();
 
     //which course number?
@@ -68,14 +68,20 @@ function addRow() {
       alert("Invalid entry");
     }
 
+    var table, row, rowCount, row;
 
-//ITERATE THROUGH ALL ENGR ARRAYS
+//CORE CLASSES
 for(i=0; i<COEN_MAJOR.length; i++)
 {
     if(COEN_MAJOR[i]==TakenClass)
     {
-        var table = document.getElementById("majorclassestable");
+        table = document.getElementById("majorclassestable");
         filter_flag=0;
+        /*rowCount = table.rows.length;
+        row = table.insertRow(rowCount);
+        row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+        row.insertCell(1).innerHTML= TakenClass;
+        */
     }
 }
 
@@ -84,8 +90,13 @@ for(i=0; i<COEN_UPPERDIV_ELECTIVES.length; i++)
 
     if(COEN_UPPERDIV_ELECTIVES[i]==TakenClass)
     {
-        var table = document.getElementById("majorclassestable");
+        table = document.getElementById("majorclassestable");
         filter_flag=0;
+        rowCount = table.rows.length;
+        row = table.insertRow(Count);
+        row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+        row.insertCell(1).innerHTML= TakenClass;
+
     }
 }
 
@@ -94,8 +105,12 @@ for(i=0; i<writing.length; i++)
 
     if(writing[i]==TakenClass)
     {
-        var table = document.getElementById("majorclassestable");
+        table = document.getElementById("majorclassestable");
         filter_flag=0;
+        rowCount = table.rows.length;
+        row = table.insertRow(rowCount);
+        row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+        row.insertCell(1).innerHTML= TakenClass;
     }
 }
 
@@ -106,6 +121,7 @@ for(i=0; i<math.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
+
     }
 }
 
@@ -116,7 +132,7 @@ for(i=0; i<sci.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
-    }
+      }
 }
 //END MAJOR ARRAYS
 
@@ -260,28 +276,65 @@ for(i=0; i<diversity.length; i++)
 if(filter_flag==1)
 {
     var table = document.getElementById("filteredclassestable");
+
 }
 
 
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
+var rowCount = table.rows.length;
+var row = table.insertRow(rowCount);
 
-    row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+row.insertCell(1).innerHTML= TakenClass;
 
-    //CASES SEARCH THROUGH ARRAY
-    row.insertCell(1).innerHTML= TakenClass;
+
 }
 
 
 function deleteRow(obj) {
 
     var index = obj.parentNode.parentNode.rowIndex;
+    var table;
+
     //if()
-        var table = document.getElementById("majorclassestable");
     //if()
-        var table = document.getElementById("coreclassestable");
-    //if()
-        var table = document.getElementById("majorclassestable");
+
+    /*//HTML INPUT ELEMENT
+    alert(obj);
+
+    //HTMLTABLECELL ELEMENT
+    alert(obj.parentNode);
+
+    //HTMLTABLE ROWELEMENT
+    alert(obj.parentNode.parentNode);
+
+    //HTMLTABLESECTION
+    alert(obj.parentNode.parentNode.parentNode);
+
+    //HTML TABLE ELEMENT
+    alert(obj.parentNode.parentNode.parentNode.parentNode); */
+    //alert(obj.parentNode.parentNode.parentNode.parentNode.id);
+    //alert(obj.parentNode.parentNode.rowIndex);
+
+    if(obj.parentNode.parentNode.parentNode.parentNode.id == "majorclassestable")
+   {
+      //alert(obj.parentNode.parentNode.parentNode.parentNode.id);
+      //alert(obj.parentNode.parentNode.rowIndex);
+     table = document.getElementById("majorclassestable");
+    //  alert(table.id);
+    //  alert(obj.parentNode.parentNode.parentNode.parentNode.id);
+    //  alert(obj.parentNode.parentNode.rowIndex)
+   }
+
+    if(obj.parentNode.parentNode.parentNode.parentNode.id=="coreclassestable")
+    {
+    table = document.getElementById("coreclassestable");
+    }
+
+
+    if(obj.parentNode.parentNode.parentNode.parentNode.id="filteredclassestable")
+    {
+        table = document.getElementById("filteredclassestable");
+    }
 
 
     table.deleteRow(index);

@@ -534,3 +534,189 @@ function checkArray(TakenClass)
         if(COEN)
     }
 } */
+
+function displayreq(){
+  $(finalreq).empty();
+  if(user[44].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “DIV”;
+ }
+  if(user[43].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “SOCSCI”;
+ }
+if(user[42].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “CNI3”;
+ }
+if(user[41].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “CNI2”;
+ }
+if(user[40].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “CNI1”;
+ }
+if(user[39].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “ETHICS”;
+ }
+if(user[38].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “ELSJ”;
+ }
+if(user[37].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “RTC3”;
+ }
+ if(user[36].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “RTC2”;
+ }
+ if(user[35].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “RTC1”;
+ }
+ if(user[34].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “CTW2”;
+ }
+ if(user[33].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “CTW1”;
+ }
+ if(user[32].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “ENGR1”;
+ }
+ if(user[31].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “CHEM11”;
+ }
+ if(user[30].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “PHYS33”;
+ }
+ if(user[29].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “PHYS32”;
+ }
+ if(user[28].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “PHYS31”;
+ }
+ if(user[27].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “MATH53/166/AMTH118”;
+ }
+ if(user[26].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “AMTH108/AMTH122”;
+ }
+ if(user[25].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “AMTH106”;
+ }
+ if(user[24].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “MATH14”;
+ }
+ if(user[23].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “MATH13”;
+ }
+ if(user[22].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “MATH12”;
+ }
+ if(user[21].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “MATH11”;
+ }
+ if(user[20].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “ENGL181”;
+ }
+ if(user[19].length < 3){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “ELECTIVES”;
+ }
+ if(user[18].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “ELEN153”;
+ }
+ if(user[17].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “ELEN50”;
+ }
+ if(user[16].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN196”;
+ }
+ if(user[15].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN195”;
+ }
+ if(user[14].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN194”;
+ }
+ if(user[13].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN179”;
+ }
+ if(user[12].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN177”;
+ }
+ if(user[11].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN175”;
+ }
+ if(user[10].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN174”;
+ }
+ if(user[9].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN171”;
+ }
+ if(user[8].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN146”;
+ }
+ if(user[7].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN122”;
+ }
+ if(user[6].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN70”;
+ }
+ if(user[5].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN21”;
+ }
+ if(user[4].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN20”;
+ }
+ if(user[3].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = “COEN19”;
+ }
+  if(user[2].length == 0){
+    var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN12";
+  }
+  if(user[1].length == 0){
+    var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN11";
+  }
+ if(user[0].length == 0){
+    var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN10";
+  }
+  
+  return false;
+}

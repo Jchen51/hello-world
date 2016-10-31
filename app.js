@@ -1,21 +1,14 @@
-/*
-
-PROTOTYPE HALLOWEEN VERSION
-GRADTRAK
-APP.JS
-VERSION MANY.01
-*/
-
 //MAJOR
 var COEN_MAJOR = ["COEN10", "COEN11","COEN12", "COEN19", "COEN20", "COEN21", "COEN70", "COEN122", "COEN146","COEN 171", "COEN 174", "COEN 175", "COEN177", "COEN179", "COEN194", "COEN195", "COEN196"];
+var elen = ["ELEN50","ELEN153"];
 var COEN_UPPERDIV_ELECTIVES = ["COEN120","COEN123", "COEN129", "COEN152", "COEN160", "COEN161", "COEN162", "COEN163", "COEN164", "COEN165","COEN166", "COEN169", "COEN178","COEN180"];
-var writing=["ENGL181","ENGL182A","ENGL182B"];
+var writing=["ENGL181"];
 var math=["MATH11","MATH12","MATH13","MATH14","AMTH106","AMTH108","MATH53","MATH166","AMTH118"];
 var sci=["PHYS31","PHYS32","PHYS33","CHEM11"];
 //CORE
 var civic=["ENGR1","COEN196"];
 var arts=["ENGL181","COEN196"];
-var sts=["ENGL181","ENGL182","COEN196"];
+var sts=["ENGL181","COEN196"];
 var ctw1=["ENGL1A","ENGL1H","ENVS1A","PHIL1A","SPAN1A","WGST1A"];
 var ctw2=["ENGL2A","ENGL2H","PHIL2A","WGST2A"];
 var rtc1=["RSOC7","RSOC9","RSOC10","RSOC12","RSOC19","SCTR11","SCTR15","SCTR19","TESP2","TESP4"];
@@ -29,64 +22,118 @@ var cni3=["ANTH50","ANTH152","ANTH156","ANTH172","ANTH181","ANTH184","ANTH185","
 var sosh=["ANTH2","ANTH3","ANTH196","CLAS172","ECON1","ECON1E","ECON2","ECON129BF","HIST107","LBST100","POLI2","POLI40","POLI99","POLI134","POLI140","POLI143","POLI145","PSYC1","PSYC2","SOCI1"];
 var diversity=["ANTH146","ANTH148","ANTH149","ANTH157","ANTH170","ARTH140","ARTH143","ARTH146","ARTH185","COMM107A","COMM121A","COMM164A","COMM168A","DANC62","DANC162","DANC66","DANC166","ECON166","ENGL31G","ENGL35","ENGL35G","ENGL36","ENGL38","ENGL39","ENGL67","ENGL68","ENGL69","ENGL79G","ENGL122","ENGL122AW","ENGL125","ENGL129","ENGL132G","ENGL135","ENGL136","ENGL138","ENGL152","ETHN5","ETHN10","ETHN20","ETHN30","ETHN35","ETHN36","ETHN40","ETHN41","ETHN50","ETHN51","ETHN65","ETHN70","ETHN95","ETHN96","ETHN120","ETHN123","ETHN125","ETHN130","ETHN132","ETHN134","ETHN135","ETHN139","ETHN141","ETHN142","ETHN144","ETHN145","ETHN149","ETHN152","ETHN153","ETHN154","ETHN155","ETHN156","ETHN157","ETHN160","ETHN161","ETHN162","ETHN163","ETHN165","ETHN178","HIST84","HIST153","HIST156A","HIST156B","HIST158","HIST172","HIST177","HIST178","HIST180","HIST181","HIST182","HIST183","HIST185","HIST187","HIST188S","ITAL185","LEAD10","LBST106","MUSC20","MUSC132","MUSC134","MUSC196","PHIL70","PHIL156","POLI134","POLI153","POLI154","POLI171","POLI195DW","PSYC156","PSYC182","PSYC189","PSYC196","SOCI33","SOCI150","SOCI153","SOCI162","SOCI175","SOCI180","SPAN176","THTR65","THTR151","THTR161","TESP65","WGST14","WGST15","WGST34","WGST50","WGST51","WGST56","WGST57","WGST101","WGST110","WGST111","WGST112","WGST113","WGST114","WGST115","WGST116","WGST117","WGST118","WGST134","WGST134AW","WGST136","WGST138","WGST144","WGST155","WGST156","WGST163","WGST164","WGST173","WGST174","WGST180","WGST188"];
 
-/*Function: Add row
-Info: Formats or invalidates certain inputs. Iterates through a variety of arrays
-Populates table and creates row with a delete button.
-*/
-function addRow() {
+var entered=[];
+
+//var user = new Array(43+1).join('0').split('').map(parseFloat);
 
 
+function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    //alert(name);
+    //alert(value);
+    //alert(days);
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+
+
+
+function listCookies() {
+    var theCookies = document.cookie.split(';');
+    var aString = '';
+    for (var i = 1 ; i <= theCookies.length; i++) {
+        aString += i + ' ' + theCookies[i-1] + "\n";
+    }
+}
+
+function addRow(rein) {
+
+    //var TakenClass = document.getElementById("name");
+    //alert(typeof TakenClass);
     var i,filter_flag;
+
     filter_flag = 1;
 
+    if(rein===0){
+      var userInput = document.getElementById("name").value;
+    }
+    else{
+      var userInput = rein;
+    }
 
-    //Turns input into 4char1-3int format
-    var userInput = document.getElementById("name").value;
+    //turn everything into 4char1-3int format
+
     userInput = userInput.toUpperCase();
     TakenClass = userInput.replace(/\s+/g,'');
 
-    //Checks if the input is too long
+    //have you entered it already?
+    if(entered.indexOf(TakenClass) != -1){
+      return false;
+    }
+    else{
+      entered.push(TakenClass);
+    }
+
+    //is it too long?
     if ((TakenClass.length > 7) || (TakenClass.length < 5)){
       alert("Invalid entry");
       return false;
     }
 
-    //Checks if it's in a valid class
+    //is it an invalid class?
     var re = /\w{4}/;
     //var re = /[a-zA-Z]+/;
 
-    //Checks department
+    //which department is it?
     var classtype = TakenClass.match(re);
     //alert(classtype);
     classtype = classtype.toString();
 
-    //Checks course number
-    var re2 = /\d+/;
+    //which course number?
+    var re2 = /\d+[\w{1}]*/;
     var classnum = TakenClass.match(re2);
 
-    //if it is a valid type of department and a number between 1 and 200
-    if (((classtype != "COEN") && (classtype != "ELEN") && (classtype != "ENGR") && (classtype != "ENGL") && (classtype != "MATH") && (classtype != "AMTH") && (classtype != "PHYS") && (classtype != "CHEM") && (classtype != "RSOC") && (classtype != "SCTR") && (classtype != "TESP") && (classtype != "MGMT") && (classtype != "PHIL") && (classtype != "PHSC") && (classtype != "PSYC") && (classtype != "WGST") && (classtype != "ANTH") && (classtype != "ARTH") && (classtype != "COMM") && (classtype != "DANC") && (classtype != "ECON") && (classtype != "ETHN") && (classtype != "HIST") && (classtype != "ITAL") && (classtype != "LEAD") && (classtype != "LBST") && (classtype != "MUSC") && (classtype != "POLI") && (classtype != "SOCI") && (classtype != "SPAN") && (classtype != "THTR") && (classtype != "CLAS") && (classtype != "ARAB") && (classtype != "ENVS") && (classtype != "FREN") && (classtype != "BIOL") && (classtype != "BUSN") && (classtype != "INTL") && (classtype != "ELSJ") && (classtype != "ARTS") && (classtype != "GERM")) || ((Number(classnum) < 1 ) || (Number(classnum) > 200))){
-      alert("Invalid entry");
-    }
 
-    var table, row, rowCount, row;
-
-    //ENTER DOESN'T CLEAR ANYMORE
-    document.getElementById("add")
-        .addEventListener("keyup", function(event) {
-        event.preventDefault();
-        if (event.keyCode == 13) {
-            document.getElementById("id_of_button").click();
-        }
-    });
-
-
-//Case 1: Major Classes
+//ITERATE THROUGH ALL ENGR ARRAYS
 for(i=0; i<COEN_MAJOR.length; i++)
 {
     if(COEN_MAJOR[i]==TakenClass)
     {
-        table = document.getElementById("majorclassestable");
+        var table = document.getElementById("majorclassestable");
         filter_flag=0;
     }
 }
@@ -96,10 +143,19 @@ for(i=0; i<COEN_UPPERDIV_ELECTIVES.length; i++)
 
     if(COEN_UPPERDIV_ELECTIVES[i]==TakenClass)
     {
-        table = document.getElementById("majorclassestable");
+        var table = document.getElementById("majorclassestable");
         filter_flag=0;
-
     }
+}
+
+for(i=0; i<elen.length;i++)
+{
+  if(elen[i]==TakenClass)
+  {
+    var table = document.getElementById("majorclassestable");
+    filter_flag=0;
+  }
+
 }
 
 for(i=0; i<writing.length; i++)
@@ -107,7 +163,7 @@ for(i=0; i<writing.length; i++)
 
     if(writing[i]==TakenClass)
     {
-        table = document.getElementById("majorclassestable");
+        var table = document.getElementById("majorclassestable");
         filter_flag=0;
     }
 }
@@ -119,7 +175,6 @@ for(i=0; i<math.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
-
     }
 }
 
@@ -128,18 +183,19 @@ for(i=0; i<sci.length; i++)
 
     if(sci[i]==TakenClass)
     {
-        table = document.getElementById("majorclassestable");
+        var table = document.getElementById("majorclassestable");
         filter_flag=0;
-      }
+    }
 }
-//End Case 1:
+//END MAJOR ARRAYS
 
-//Case 2: Core Classes
+//BEGIN CORE CLASSES
+
 for(i=0; i<civic.length; i++)
 {
     if(civic[i]==TakenClass)
     {
-      table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -148,7 +204,7 @@ for(i=0; i<arts.length; i++)
 {
     if(arts[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -157,7 +213,7 @@ for(i=0; i<sts.length; i++)
 {
     if(sts[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -166,7 +222,7 @@ for(i=0; i<ctw1.length; i++)
 {
     if(ctw1[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -175,7 +231,7 @@ for(i=0; i<ctw2.length; i++)
 {
     if(ctw2[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -184,7 +240,7 @@ for(i=0; i<rtc1.length; i++)
 {
     if(rtc1[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -192,7 +248,7 @@ for(i=0; i<rtc2.length; i++)
 {
     if(rtc2[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -201,7 +257,7 @@ for(i=0; i<rtc3.length; i++)
 {
     if(rtc3[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -210,7 +266,7 @@ for(i=0; i<elsj.length; i++)
 {
     if(elsj[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -219,7 +275,7 @@ for(i=0; i<ethics.length; i++)
 {
     if(ethics[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -228,7 +284,7 @@ for(i=0; i<cni1.length; i++)
 {
     if(cni1[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -237,7 +293,7 @@ for(i=0; i<cni2.length; i++)
 {
     if(cni1[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -246,7 +302,7 @@ for(i=0; i<cni3.length; i++)
 {
     if(cni1[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -255,7 +311,7 @@ for(i=0; i<sosh.length; i++)
 {
     if(sosh[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
@@ -264,56 +320,387 @@ for(i=0; i<diversity.length; i++)
 {
     if(diversity[i]==TakenClass)
     {
-        table = document.getElementById("coreclassestable");
+        var table = document.getElementById("coreclassestable");
         filter_flag=0;
     }
 }
-//End Case 2
+//END CORE CLASSES
 
-//Case 3: Filtered/Educational Enrichment
 if(filter_flag==1)
 {
-    table = document.getElementById("filteredclassestable");
+    var table = document.getElementById("filteredclassestable");
+}
+
+
+
+    var rowCount = table.rows.length;
+
+    var row = table.insertRow(rowCount);
+
+    row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+
+    //CASES SEARCH THROUGH ARRAY
+    row.insertCell(1).innerHTML= TakenClass;
+
+
+
+
+    //insert into ARRAY
+
+
+  if((classtype=="COEN") || (classtype=="ELEN")){
+    if(COEN_MAJOR.indexOf(TakenClass) != -1){
+      var x = COEN_MAJOR.indexOf(TakenClass);
+      if (user[x].indexOf(TakenClass) == -1)
+        user[x].push(TakenClass);
+    }
+    else if (elen.indexOf(TakenClass) != -1){
+      var x = elen.indexOf(TakenClass);
+      if (user[x].indexOf(TakenClass) == -1)
+        user[x+17].push(TakenClass);
+    }
+    //needs to have 3
+    else if(COEN_UPPERDIV_ELECTIVES.indexOf(TakenClass) != -1){
+      if (user[19].indexOf(TakenClass) == -1)
+        user[19].push(TakenClass);
+    }
+  }else {
+    if ((classtype=="ENGL") && (classnum==181)){
+      if (user[20].indexOf(TakenClass) == -1)
+        user[20].push(TakenClass);
+    }
+    else if (classtype=="MATH"){
+      if((classnum==53)||(classnum==166)){
+        if (user[27].indexOf(TakenClass) == -1)
+          user[27].push(TakenClass);
+      }
+      else if(classnum==122){
+        if (user[26].indexOf(TakenClass) == -1)
+          user[26].push(TakenClass);
+      }
+      else{
+        if (user[classnum+10].indexOf(TakenClass) == -1)
+          user[classnum+10].push(TakenClass);
+      }
+    }
+    else if (classtype=="AMTH"){
+      if(classnum==106){
+        if (user[25].indexOf(TakenClass) == -1)
+          user[25].push(TakenClass);
+      }
+      else if (classnum == 108){
+        if (user[26].indexOf(TakenClass) == -1)
+          user[26].push(TakenClass);
+      }
+      else if (classnum == 118){
+        if (user[27].indexOf(TakenClass) == -1)
+          user[27].push(TakenClass);
+      }
+    }
+    else if (classtype=="PHYS"){
+      if (user[classnum-3].indexOf(TakenClass) == -1)
+        user[classnum-3].push(TakenClass);
+    }
+    else if (classtype=="CHEM"){
+      if (user[31].indexOf(TakenClass) == -1)
+        user[31].push(TakenClass);
+    }
+    else if ((classtype=="ENGR") && (classnum == 1)){
+      if (user[32].indexOf(TakenClass) == -1)
+        user[32].push(TakenClass);
+    }
+    else {
+      if (ctw1.indexOf(TakenClass) != -1){
+        if (user[33].indexOf(TakenClass) == -1)
+          user[33].push(TakenClass);
+      }
+      if (ctw2.indexOf(TakenClass) != -1){
+        if (user[34].indexOf(TakenClass) == -1)
+          user[34].push(TakenClass);
+      }
+      if (rtc1.indexOf(TakenClass) != -1){
+        if (user[35].indexOf(TakenClass) == -1)
+          user[35].push(TakenClass);
+      }
+      if (rtc2.indexOf(TakenClass) != -1){
+        if (user[36].indexOf(TakenClass) == -1)
+          user[36].push(TakenClass);
+      }
+      if (rtc3.indexOf(TakenClass) != -1){
+        if (user[37].indexOf(TakenClass) == -1)
+          user[37].push(TakenClass);
+      }
+      if (elsj.indexOf(TakenClass) != -1){
+        if (user[38].indexOf(TakenClass) == -1)
+          user[38].push(TakenClass);
+      }
+      if (ethics.indexOf(TakenClass) != -1){
+        if (user[39].indexOf(TakenClass) == -1)
+          user[39].push(TakenClass);
+      }
+      if (cni1.indexOf(TakenClass) != -1){
+        if (user[40].indexOf(TakenClass) == -1)
+          user[40].push(TakenClass);
+      }
+      if (cni2.indexOf(TakenClass) != -1){
+        if (user[41].indexOf(TakenClass) == -1)
+          user[41].push(TakenClass);
+      }
+      if (cni3.indexOf(TakenClass) != -1){
+        if (user[42].indexOf(TakenClass) == -1)
+          user[42].push(TakenClass);
+      }
+      if (sosh.indexOf(TakenClass) != -1){
+        if (user[43].indexOf(TakenClass) == -1)
+          user[43].push(TakenClass);
+      }
+      if (diversity.indexOf(TakenClass) != -1){
+        if (user[44].indexOf(TakenClass) == -1)
+          user[44].push(TakenClass);
+      }
+      if (filter_flag == 1){
+        if (user[45].indexOf(TakenClass) == -1)
+          user[45].push(TakenClass);
+      }
+    }
+  }
+
+
+  var json_user = JSON.stringify(user);
+
+  createCookie("myArray",json_user);
+
+
+  displayreq();
 
 }
 
 
-//Populates the table with a delete button and the class taken
-var rowCount = table.rows.length;
-var row = table.insertRow(rowCount);
-row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
-row.insertCell(1).innerHTML= TakenClass;
-
-//Set Localstorage
-}
-
-/*Function: deleteRow
-Takes in the HTML Button. Accesses its many many many parents to find the table id.
-Compares the id to 3 cases.
-Deletes the HTML Button's row's index
-*/
 function deleteRow(obj) {
 
-    var index = obj.parentNode.parentNode.rowIndex;
-    var table;
+  var index = obj.parentNode.parentNode.rowIndex;
+  var table;
 
-    //Case 1: Major Classes
-    if(obj.parentNode.parentNode.parentNode.parentNode.id == "majorclassestable")
-    {
-      table = document.getElementById("majorclassestable");
+  //Case 1: Major Classes
+  if(obj.parentNode.parentNode.parentNode.parentNode.id == "majorclassestable")
+  {
+    table = document.getElementById("majorclassestable");
+  }
+
+  //Case 2: Core Classes
+  if(obj.parentNode.parentNode.parentNode.parentNode.id=="coreclassestable")
+  {
+   table = document.getElementById("coreclassestable");
+  }
+
+  //Case 3: Major Classes
+  if(obj.parentNode.parentNode.parentNode.parentNode.id=="filteredclassestable")
+  {
+    table = document.getElementById("filteredclassestable");
+  }
+
+  var temp = table.rows[index].cells[1].innerHTML;
+  table.deleteRow(index);
+
+  for(var i = 0; i < 46; i++){
+    if(user[i].length!= 0){
+      for(var j = 0 ; j < user[i].length; j++){
+        if(user[i][j] == temp){
+          user[i].splice(j,1);
+        }
+      }
     }
+  }
 
-    //Case 2: Core Classes
-    if(obj.parentNode.parentNode.parentNode.parentNode.id=="coreclassestable")
-    {
-     table = document.getElementById("coreclassestable");
-    }
+  displayreq();
 
-    //Case 3: Major Classes
-    if(obj.parentNode.parentNode.parentNode.parentNode.id=="filteredclassestable")
-    {
-      table = document.getElementById("filteredclassestable");
-    }
+}
 
-    table.deleteRow(index);
+function displayreq(){
+  $(finalreq).empty();
+  if(user[44].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "DIVERSITY";
+ }
+  if(user[43].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "SOCSCI";
+ }
+if(user[42].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "CNI3";
+ }
+if(user[41].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "CNI2";
+ }
+if(user[40].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "CNI1";
+ }
+if(user[39].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "ETHICS";
+ }
+if(user[38].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "ELSJ";
+ }
+if(user[37].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "RTC3";
+ }
+ if(user[36].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "RTC2";
+ }
+ if(user[35].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "RTC1";
+ }
+ if(user[34].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "CTW2";
+ }
+ if(user[33].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "CTW1";
+ }
+ if(user[32].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "ENGR1";
+ }
+ if(user[31].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "CHEM11";
+ }
+ if(user[30].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "PHYS33";
+ }
+ if(user[29].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "PHYS32";
+ }
+ if(user[28].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "PHYS31";
+ }
+ if(user[27].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "MATH53";
+ }
+ if(user[26].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "AMTH108";
+ }
+ if(user[25].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "AMTH106";
+ }
+ if(user[24].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "MATH14";
+ }
+ if(user[23].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "MATH13";
+ }
+ if(user[22].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "MATH12";
+ }
+ if(user[21].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "MATH11";
+ }
+ if(user[20].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "ENGL181";
+ }
+ if(user[19].length < 3){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "ELECTIVES: " + (3-user[19].length) + " left";
+ }
+ if(user[18].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "ELEN153";
+ }
+ if(user[17].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "ELEN50";
+ }
+ if(user[16].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN196";
+ }
+ if(user[15].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN195";
+ }
+ if(user[14].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN194";
+ }
+ if(user[13].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN179";
+ }
+ if(user[12].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN177";
+ }
+ if(user[11].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN175";
+ }
+ if(user[10].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN174";
+ }
+ if(user[9].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN171";
+ }
+ if(user[8].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN146";
+ }
+ if(user[7].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN122";
+ }
+ if(user[6].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN70";
+ }
+ if(user[5].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN21";
+ }
+ if(user[4].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN20";
+ }
+ if(user[3].length == 0){
+   var temp = finalreq.insertRow(0);
+   temp.innerHTML = "COEN19";
+ }
+ if(user[3].length == 0){
+   var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN19";
+ }
+  if(user[2].length == 0){
+    var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN12";
+  }
+  if(user[1].length == 0){
+    var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN11";
+  }
+ if(user[0].length == 0){
+    var temp = finalreq.insertRow(0);
+    temp.innerHTML = "COEN10";
+  }
+  return false;
 }

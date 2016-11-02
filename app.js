@@ -410,8 +410,18 @@ if(filter_flag==1)
       }
     }
     else if (classtype=="PHYS"){
-      if (user[classnum-3].indexOf(TakenClass) == -1)
-        user[classnum-3].push(TakenClass);
+      if (classnum==31){
+	      if (user[28].indexOf(TakenClass) == -1)
+		      user[28].push(TakenClass);
+      }
+      if (classnum==32){
+	      if (user[29].indexOf(TakenClass) == -1)
+		      user[29].push(TakenClass);
+      }
+      if (classnum==33){
+	      if (user[30].indexOf(TakenClass) == -1)
+		      user[30].push(TakenClass);
+      }
     }
     else if (classtype=="CHEM"){
       if (user[31].indexOf(TakenClass) == -1)

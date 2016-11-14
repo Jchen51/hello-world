@@ -12,51 +12,31 @@ var sts=["ENGL181","COEN196"];
 var ctw1=["ENGL1A","ENGL1H","ENVS1A","PHIL1A","SPAN1A","WGST1A"];
 var ctw2=["ENGL2A","ENGL2H","PHIL2A","WGST2A"];
 var rtc1=["RSOC7","RSOC9","RSOC10","RSOC12","RSOC19","SCTR11","SCTR15","SCTR19","TESP2","TESP4"];
-var rtc2=["ANTH150","ARAB171","CLAS12A","CLAS63","CLAS65","CLAS67","CLAS68","CLAS69","COMM175A","COMM179A","ENGL161","ENGL189","ENGR143","ENVS84","HIST16","HIST17","HIST103","HIST117","HIST120","HIST126","HIST129","HIST152","MUSC189","POLI139",
-"PSYC193","RSOC27","RSOC33","RSOC38","RSOC46","RSOC51","RSOC54","RSOC64","RSOC67","RSOC81","RSOC85","RSOC86","RSOC87","RSOC88","RSOC90","RSOC91","RSOC96","RSOC99","SCTR26","SCTR27","SCTR28","SCTR30","SCTR33","SCTR35","SCTR39",
-"SCTR45","SCTR48","SCTR58","SCTR65","TESP45","TESP46","TESP50","TESP60","TESP65","TESP71","TESP72","TESP77","TESP79","TESP82","TESP86","TESP88","WGST46","WGST47","WGST48"];
-var rtc3=["BIOL171","ELEN160","ENVS152","ETHN129","RSOC106","RSOC111","RSOC113","RSOC115","RSOC119","RSOC121","RSOC123","RSOC130","RSOC131","RSOC134","RSOC135","RSOC136","RSOC139","RSOC140","RSOC154","RSOC157","RSOC159","RSOC168","RSOC170","RSOC174",
-"RSOC182","RSOC184","RSOC188","RSOC190","RSOC191","RSOC194","SCTR100","SCTR110","SCTR128","SCTR132","SCTR139","SCTR157","SCTR158","SCTR165R","SCTR170","SCTR175","TESP106","TESP108","TESP109","TESP118","TESP119","TESP121","TESP124","TESP131","TESP137",
-"TESP138","TESP143","TESP153","TESP157","TESP159","TESP163","TESP164","TESP165","TESP175","TESP176","TESP183","TESP184","TESP185","TESP187","WGST145","WGST148","WGST149","WGST151","WGST152"];
-var elsj=["ANTH3","BIOL188","BUSN151B","BUSN188","BUSN189","BUSN195EL","COMM40EL","COMM107A","COMM141B","DANC59","DANC159","DANC69","DANC169","DANC189","ENGL106EL","ENGL111","ENGL145EL","ENGL150EL","ENGL176","ENGR111","ENVS131","ENVS155","ETHN60","ETHN160",
-"ETHN161","ELSJ22","ELSJ23","ELSJ30","ELSJ50","ELSJ135","ELSJ197","ELSJ198","ELSJ199","INTL139","INTL139BF","LEAD10","LBST106","MGMT8","PHIL5A","PHIL70","POLI3","POLI158","POLI198EL","PSYC113EL","PSYC114EL","PSYC115EL","PSYC117EL","PSYC185EL","PSYC190EL",
-"PSYC196","PHSC31","PHSC131","PHSC170","RSOC99","RSOC135","SCTR128","SOCI30","SOCI148","SOCI165","SPAN21EL","SPAN22EL","SPAN23EL","ARTS151","TESP43","TESP45","TESP46","TESP129","TESP157","TESP158","TESP183"];
-var ethics=["ENGR19","MGMT6","PHIL2","PHIL3A","PHIL4A","PHIL5","PHIL5A","PHIL6","PHIL7","PHIL7B","PHIL8","PHIL9","PHIL10","PHIL111","PHIL113","PHIL115","PHIL116","PHIL121","PHIL122A","PHIL122B","PHIL123","PHSC7","PSYC114","TESP159",
-"WGST58","WGST184","WGST189"];
+var rtc2=["ANTH150","ARAB171","CLAS12A","CLAS63","CLAS65","CLAS67","CLAS68","CLAS69","COMM175A","COMM179A","ENGL161","ENGL189","ENGR143","ENVS84","HIST16","HIST17","HIST103","HIST117","HIST120","HIST126","HIST129","HIST152","MUSC189","POLI139","PSYC193","RSOC27","RSOC33","RSOC38","RSOC46","RSOC51","RSOC54","RSOC64","RSOC67","RSOC81","RSOC85","RSOC86","RSOC87","RSOC88","RSOC90","RSOC91","RSOC96","RSOC99","SCTR26","SCTR27","SCTR28","SCTR30","SCTR33","SCTR35","SCTR39","SCTR45","SCTR48","SCTR58","SCTR65","TESP45","TESP46","TESP50","TESP60","TESP65","TESP71","TESP72","TESP77","TESP79","TESP82","TESP86","TESP88","WGST46","WGST47","WGST48"];
+var rtc3=["BIOL171","ELEN160","ENVS152","ETHN129","RSOC106","RSOC111","RSOC113","RSOC115","RSOC119","RSOC121","RSOC123","RSOC130","RSOC131","RSOC134","RSOC135","RSOC136","RSOC139","RSOC140","RSOC154","RSOC157","RSOC159","RSOC168","RSOC170","RSOC174","RSOC182","RSOC184","RSOC188","RSOC190","RSOC191","RSOC194","SCTR100","SCTR110","SCTR128","SCTR132","SCTR139","SCTR157","SCTR158","SCTR165R","SCTR170","SCTR175","TESP106","TESP108","TESP109","TESP118","TESP119","TESP121","TESP124","TESP131","TESP137","TESP138","TESP143","TESP153","TESP157","TESP159","TESP163","TESP164","TESP165","TESP175","TESP176","TESP183","TESP184","TESP185","TESP187","WGST145","WGST148","WGST149","WGST151","WGST152"];
+var elsj=["ANTH3","BIOL188","BUSN151B","BUSN188","BUSN189","BUSN195EL","COMM40EL","COMM107A","COMM141B","DANC59","DANC159","DANC69","DANC169","DANC189","ENGL106EL","ENGL111","ENGL145EL","ENGL150EL","ENGL176","ENGR111","ENVS131","ENVS155","ETHN60","ETHN160","ETHN161","ELSJ22","ELSJ23","ELSJ30","ELSJ50","ELSJ135","ELSJ197","ELSJ198","ELSJ199","INTL139","INTL139BF","LEAD10","LBST106","MGMT8","PHIL5A","PHIL70","POLI3","POLI158","POLI198EL","PSYC113EL","PSYC114EL","PSYC115EL","PSYC117EL","PSYC185EL","PSYC190EL","PSYC196","PHSC31","PHSC131","PHSC170","RSOC99","RSOC135","SCTR128","SOCI30","SOCI148","SOCI165","SPAN21EL","SPAN22EL","SPAN23EL","ARTS151","TESP43","TESP45","TESP46","TESP129","TESP157","TESP158","TESP183"];
+var ethics=["ENGR19","MGMT6","PHIL2","PHIL3A","PHIL4A","PHIL5","PHIL5A","PHIL6","PHIL7","PHIL7B","PHIL8","PHIL9","PHIL10","PHIL111","PHIL113","PHIL115","PHIL116","PHIL121","PHIL122A","PHIL122B","PHIL123","PHSC7","PSYC114","TESP159","WGST58","WGST184","WGST189"];
 var cni1=["ANTH11A","ARTH11A","ARTH11H","CLAS11A","ENGL11A","ENVS11A","GERM11A","HIST11A","ITAL11A","MUSC11A","PHIL11A","PHIL11H","SOCI11A","THTR11A","WGST11A"];
 var cni2=["ANTH12A","ARTH12A","ARTH12H","CLAS12A","ENGL12A","ENVS12A","HIST12A","HIST12H","ITAL12A","MUSC12A","PHIL12A","SOCI12A","THTR12A","WGST12A"];
-var cni3=["ANTH50","ANTH152","ANTH156","ANTH172","ANTH181","ANTH184","ANTH185","ANTH186","ANTH187","ANTH188","ARAB137","ARTH24","ARTH25","ARTH26","ARTH27","ARTH152","ARTH160","ARTH161","ARTH162","ARTH163","ARTH164","ARTH170","CLAS60","COMM105A",
-"COMM183A","COMM184A","COMM187A","COMM188A","COMM189A","DANC68","ECON134","ENGR177","ENGL31A","ENGL56","ENGL66","ENGL79A","ENGL120","ENGL153","ENGL156","ENGL157","FREN111","FREN112","FREN113","FREN114","FREN174","HIST64","HIST91","HIST92","HIST95",
-"HIST102S","HIST104","HIST107","HIST112","HIST116S","HIST122","HIST136","HIST137","HIST140S","HIST141","HIST142","HIST143S","HIST144S","HIST145","HIST146A","HIST146B","HIST147A","HIST147B","HIST150","HIST151","HIST152","HIST154B","HIST157","HIST161","HIST162",
-"HIST163","HIST164S","HIST166","MGMT80","MUSC130","MUSC136","POLI2","POLI3","POLI50","POLI126","POLI136","POLI137","POLI140","POLI145","POLI148","RSOC136","SOCI134","SOCI135","SOCI138","SPAN112","SPAN137","SPAN147","SPAN149","TESP133","WGST104",
-"WGST120","WGST122","WGST123","WGST124","WGST125","WGST126","WGST128","WGST172","WGST175"];
+var cni3=["ANTH50","ANTH152","ANTH156","ANTH172","ANTH181","ANTH184","ANTH185","ANTH186","ANTH187","ANTH188","ARAB137","ARTH24","ARTH25","ARTH26","ARTH27","ARTH152","ARTH160","ARTH161","ARTH162","ARTH163","ARTH164","ARTH170","CLAS60","COMM105A","COMM183A","COMM184A","COMM187A","COMM188A","COMM189A","DANC68","ECON134","ENGR177","ENGL31A","ENGL56","ENGL66","ENGL79A","ENGL120","ENGL153","ENGL156","ENGL157","FREN111","FREN112","FREN113","FREN114","FREN174","HIST64","HIST91","HIST92","HIST95","HIST102S","HIST104","HIST107","HIST112","HIST116S","HIST122","HIST136","HIST137","HIST140S","HIST141","HIST142","HIST143S","HIST144S","HIST145","HIST146A","HIST146B","HIST147A","HIST147B","HIST150","HIST151","HIST152","HIST154B","HIST157","HIST161","HIST162","HIST163","HIST164S","HIST166","MGMT80","MUSC130","MUSC136","POLI2","POLI3","POLI50","POLI126","POLI136","POLI137","POLI140","POLI145","POLI148","RSOC136","SOCI134","SOCI135","SOCI138","SPAN112","SPAN137","SPAN147","SPAN149","TESP133","WGST104","WGST120","WGST122","WGST123","WGST124","WGST125","WGST126","WGST128","WGST172","WGST175"];
 var sosh=["ANTH2","ANTH3","ANTH196","CLAS172","ECON1","ECON1E","ECON2","ECON129BF","HIST107","LBST100","POLI2","POLI40","POLI99","POLI134","POLI140","POLI143","POLI145","PSYC1","PSYC2","SOCI1"];
-var diversity=["ANTH146","ANTH148","ANTH149","ANTH157","ANTH170","ARTH140","ARTH143","ARTH146","ARTH185","COMM107A","COMM121A","COMM164A","COMM168A","DANC62","DANC162","DANC66","DANC166","ECON166","ENGL31G","ENGL35","ENGL35G","ENGL36","ENGL38","ENGL39",
-"ENGL67","ENGL68","ENGL69","ENGL79G","ENGL122","ENGL122AW","ENGL125","ENGL129","ENGL132G","ENGL135","ENGL136","ENGL138","ENGL152","ETHN5","ETHN10","ETHN20","ETHN30","ETHN35","ETHN36","ETHN40","ETHN41","ETHN50","ETHN51","ETHN65","ETHN70","ETHN95","ETHN96","ETHN120","ETHN123","ETHN125","ETHN130","ETHN132","ETHN134","ETHN135","ETHN139","ETHN141","ETHN142","ETHN144","ETHN145","ETHN149","ETHN152","ETHN153","ETHN154","ETHN155","ETHN156","ETHN157","ETHN160","ETHN161","ETHN162","ETHN163","ETHN165","ETHN178","HIST84","HIST153","HIST156A","HIST156B","HIST158","HIST172","HIST177","HIST178","HIST180","HIST181","HIST182","HIST183","HIST185","HIST187","HIST188S","ITAL185","LEAD10","LBST106","MUSC20","MUSC132","MUSC134","MUSC196","PHIL70","PHIL156","POLI134","POLI153","POLI154","POLI171","POLI195DW","PSYC156","PSYC182","PSYC189","PSYC196","SOCI33","SOCI150","SOCI153","SOCI162","SOCI175","SOCI180","SPAN176","THTR65","THTR151","THTR161","TESP65","WGST14","WGST15","WGST34","WGST50","WGST51","WGST56","WGST57","WGST101","WGST110","WGST111","WGST112","WGST113","WGST114","WGST115","WGST116","WGST117","WGST118","WGST134","WGST134AW","WGST136","WGST138","WGST144","WGST155","WGST156","WGST163","WGST164","WGST173","WGST174","WGST180","WGST188"];
-var entered=[];
-var fulfill_type = [" "," "];
+var diversity=["ANTH146","ANTH148","ANTH149","ANTH157","ANTH170","ARTH140","ARTH143","ARTH146","ARTH185","COMM107A","COMM121A","COMM164A","COMM168A","DANC62","DANC162","DANC66","DANC166","ECON166","ENGL31G","ENGL35","ENGL35G","ENGL36","ENGL38","ENGL39","ENGL67","ENGL68","ENGL69","ENGL79G","ENGL122","ENGL122AW","ENGL125","ENGL129","ENGL132G","ENGL135","ENGL136","ENGL138","ENGL152","ETHN5","ETHN10","ETHN20","ETHN30","ETHN35","ETHN36","ETHN40","ETHN41","ETHN50","ETHN51","ETHN65","ETHN70","ETHN95","ETHN96","ETHN120","ETHN123","ETHN125","ETHN130","ETHN132","ETHN134","ETHN135","ETHN139","ETHN141","ETHN142","ETHN144","ETHN145","ETHN149","ETHN152","ETHN153","ETHN154","ETHN155","ETHN156","ETHN157","ETHN160","ETHN161","ETHN162","ETHN163","ETHN165","ETHN178","HIST84","HIST153","HIST156A","HIST156B","HIST158","HIST172","HIST177","HIST178","HIST180","HIST181","HIST182","HIST183","HIST185","HIST187","HIST188S","ITAL185","LEAD10","LBST106","MUSC20","MUSC132","MUSC134","MUSC196","PHIL70","PHIL156","POLI134","POLI153","POLI154","POLI171","POLI195DW","PSYC156","PSYC182","PSYC189","PSYC196","SOCI33","SOCI150","SOCI153","SOCI162","SOCI175","SOCI180","SPAN176","THTR65","THTR151","THTR161","TESP65","WGST14","WGST15","WGST34","WGST50","WGST51","WGST56","WGST57","WGST101","WGST110","WGST111","WGST112","WGST113","WGST114","WGST115","WGST116","WGST117","WGST118","WGST134","WGST134AW","WGST136","WGST138","WGST144","WGST155","WGST156","WGST163","WGST164","WGST173","WGST174","WGST180","WGST188"];
 
-/* ALL_TYPES INDEXES:
-0:"COEN10"
-1:"COEN11"
-2:"COEN12",
-3:"COEN19",
-4:"COEN20",
-5:"COEN21",
-6:"COEN70",
-7:"COEN122",
-8:"COEN146","COEN171",
-9:"COEN174",
-10:"COEN175",
-11:"COEN177",
-12:"COEN179",
-13:"COEN194",
-14"COEN195", "COEN196","ELEN50","ELEN153","MATH11",
-"MATH12","MATH13","MATH14","MATH122","AMTH106","AMTH108","MATH53","PHYS31","PHYS32","PHYS33","CHEM11", "ENGR1", "CTW1","CTW2","RTC1", "RTC2","RTC3","ELSJ","ETHICS","C&I1", "C&I2","C&I3","SOCSCI","DIV"];
-*/
+//var filtered=["DANC50"];
+
+var filler=[""];
+
+var entered=[];
+
+var filtered=[];
+
+var enteredfiltered=[];
+
+var fulfill_type = [" "," "];
 
 var ALL_TYPES = ["COEN10","COEN11","COEN12","COEN19", "COEN20", "COEN21", "COEN70", "COEN122", "COEN146","COEN171", "COEN174", "COEN175", "COEN177", "COEN179", "COEN194", "COEN195", "COEN196","ELEN50","ELEN153","MATH11",
 "MATH12","MATH13","MATH14","MATH122","AMTH106","AMTH108","MATH53","PHYS31","PHYS32","PHYS33","CHEM11", "ENGR1", "CTW1","CTW2","RTC1", "RTC2","RTC3","ELSJ","ETHICS","C&I1", "C&I2","C&I3","SOCSCI","DIV"];
+
 
 //var user = new Array(43+1).join('0').split('').map(parseFloat);
 
@@ -116,10 +96,10 @@ function listCookies() {
 
 function addRow(rein) {
 
+
     //var TakenClass = document.getElementById("name");
     //alert(typeof TakenClass);
-    var i,filter_flag,fulfill_flag;
-
+    var i,filter_flag, fulfill_flag;
 
     filter_flag = 1;
     fulfill_flag=1;
@@ -130,6 +110,9 @@ function addRow(rein) {
     else{
       var userInput = rein;
     }
+
+    //pre-sanatize inputs
+    userInput = userInput.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
 
     //turn everything into 4char1-3int format
 
@@ -144,23 +127,24 @@ function addRow(rein) {
       entered.push(TakenClass);
     }
 
-    //is it too long?
-    if ((TakenClass.length > 7) || (TakenClass.length < 5)){
-      alert("Invalid entry");
+    var pattern = /^[a-zA-Z]{4}\d{1,3}[a-zA-Z]{0,2}$/;
+
+    if (!(pattern.test(TakenClass))){
+      alert("Invalid Entry");
       return false;
     }
 
+    //alert(TakenClass);
+
     //is it an invalid class?
-    var re = /\w{4}/;
-    //var re = /[a-zA-Z]+/;
+    var re = /[a-zA-Z]{4}/;
 
     //which department is it?
     var classtype = TakenClass.match(re);
-    //alert(classtype);
     classtype = classtype.toString();
 
     //which course number?
-    var re2 = /\d+[\w{1}]*/;
+    var re2 = /\d{1,3}[a-zA-Z]{0,2}/;
     var classnum = TakenClass.match(re2);
 
 
@@ -263,7 +247,6 @@ for(i=0; i<ctw1.length; i++)
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
         fulfill_type[0]="CTW1";
-
     }
 }
 
@@ -274,7 +257,6 @@ for(i=0; i<ctw2.length; i++)
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
         fulfill_type[0]="CTW2";
-
     }
 }
 
@@ -285,7 +267,6 @@ for(i=0; i<rtc1.length; i++)
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
         fulfill_type[0]="RTC1";
-
     }
 }
 for(i=0; i<rtc2.length; i++)
@@ -295,7 +276,6 @@ for(i=0; i<rtc2.length; i++)
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
         fulfill_type[0]="RTC2";
-
     }
 }
 
@@ -374,7 +354,6 @@ for(i=0; i<sosh.length; i++)
         if(TakenClass=="ANTH3"){
         fulfill_type[1]="ELSJ";
         }
-
     }
 }
 
@@ -392,172 +371,267 @@ for(i=0; i<diversity.length; i++)
 if(filter_flag==1)
 {
     var table = document.getElementById("filteredclassestable");
+    entered.push(TakenClass);
 }
 
-
-
-    var rowCount = table.rows.length;
-
-    var row = table.insertRow(rowCount);
-
-    row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
-
-    //CASES SEARCH THROUGH ARRAY
-
-if(fulfill_flag==1){
-  row.insertCell(1).innerHTML= TakenClass;
-  row.insertCell(2).innerHTML= fulfill_type[0];
-  row.insertCell(3).innerHTML =fulfill_type[1];
-}
-else{
-  row.insertCell(1).innerHTML= TakenClass;
-  row.insertCell(2).innerHTML= TakenClass;
-  row.insertCell(3).innerHTML = fulfill_type[1];
-
-}
-
+  var arraynum = [];
 
     //insert into ARRAY
-
 
   if((classtype=="COEN") || (classtype=="ELEN")){
     if(COEN_MAJOR.indexOf(TakenClass) != -1){
       var x = COEN_MAJOR.indexOf(TakenClass);
-      if (user[x].indexOf(TakenClass) == -1)
+      if (user[x].indexOf(TakenClass) == -1){
         user[x].push(TakenClass);
+        arraynum.push(x);
+      }
     }
     else if (elen.indexOf(TakenClass) != -1){
       var x = elen.indexOf(TakenClass);
-      if (user[x].indexOf(TakenClass) == -1)
+      if (user[x].indexOf(TakenClass) == -1){
         user[x+17].push(TakenClass);
+        arraynum.push(x);
+      }
     }
     //needs to have 3
-    else if(COEN_UPPERDIV_ELECTIVES.indexOf(TakenClass) != -1){
-      if (user[19].indexOf(TakenClass) == -1)
+    if(COEN_UPPERDIV_ELECTIVES.indexOf(TakenClass) != -1){
+      if (user[19].indexOf(TakenClass) == -1){
         user[19].push(TakenClass);
+        arraynum.push(19);
+      }
+    }
+    else{
+      if (filter_flag === 1){
+        if (user[45].indexOf(TakenClass) == -1){
+          user[45].push(TakenClass);
+          arraynum.push(45);
+        }
+      }
     }
   }else {
     if ((classtype=="ENGL") && (classnum==181)){
-      if (user[20].indexOf(TakenClass) == -1)
+      if (user[20].indexOf(TakenClass) == -1){
         user[20].push(TakenClass);
+        arraynum.push(20);
+      }
     }
     else if (classtype=="MATH"){
       if((classnum==53)||(classnum==166)){
-        if (user[27].indexOf(TakenClass) == -1)
+        if (user[27].indexOf(TakenClass) == -1){
           user[27].push(TakenClass);
+          arraynum.push(27);
+        }
       }
       else if(classnum==122){
-        if (user[26].indexOf(TakenClass) == -1)
+        if (user[26].indexOf(TakenClass) == -1){
           user[26].push(TakenClass);
+          arraynum.push(26);
+        }
       }
       else if(classnum==11){
-        if (user[21].indexOf(TakenClass) == -1)
+        if (user[21].indexOf(TakenClass) == -1){
           user[21].push(TakenClass);
+          arraynum.push(21);
+        }
       }
 	else if (classnum == 12){
-	if (user[22].indexOf(TakenClass) == -1)
+	if (user[22].indexOf(TakenClass) == -1){
 		user[22].push(TakenClass);
+    arraynum.push(22);
+  }
 	}
 	else if (classnum == 13){
-	if (user[23].indexOf(TakenClass) == -1)
+	if (user[23].indexOf(TakenClass) == -1){
 		user[23].push(TakenClass);
+    arraynum.push(23);
+  }
 	}
 	else if (classnum == 14){
-	if (user[24].indexOf(TakenClass) == -1)
+	if (user[24].indexOf(TakenClass) == -1){
 		user[24].push(TakenClass);
+    arraynum.push(24);
+  }
 	}
+  else{
+  if (filter_flag === 1){
+    if (user[45].indexOf(TakenClass) == -1){
+      user[45].push(TakenClass);
+      arraynum.push(45);
+    }
+  }
+}
     }
     else if (classtype=="AMTH"){
       if(classnum==106){
-        if (user[25].indexOf(TakenClass) == -1)
+        if (user[25].indexOf(TakenClass) == -1){
           user[25].push(TakenClass);
+          arraynum.push(25);
+        }
       }
       else if (classnum == 108){
-        if (user[26].indexOf(TakenClass) == -1)
+        if (user[26].indexOf(TakenClass) == -1){
           user[26].push(TakenClass);
+          arraynum.push(26);
+        }
       }
       else if (classnum == 118){
-        if (user[27].indexOf(TakenClass) == -1)
+        if (user[27].indexOf(TakenClass) == -1){
           user[27].push(TakenClass);
+          arraynum.push(27);
+        }
+      }else{
+        if (filter_flag === 1){
+          if (user[45].indexOf(TakenClass) == -1){
+            user[45].push(TakenClass);
+            arraynum.push(45);
+          }
+        }
       }
     }
     else if (classtype=="PHYS"){
       if (classnum==31){
-	      if (user[28].indexOf(TakenClass) == -1)
+	      if (user[28].indexOf(TakenClass) == -1){
 		      user[28].push(TakenClass);
-      }
+          arraynum.push(28);
+        }
+      }else
       if (classnum==32){
-	      if (user[29].indexOf(TakenClass) == -1)
+	      if (user[29].indexOf(TakenClass) == -1){
 		      user[29].push(TakenClass);
-      }
+          arraynum.push(29);
+        }
+      }else
       if (classnum==33){
-	      if (user[30].indexOf(TakenClass) == -1)
+	      if (user[30].indexOf(TakenClass) == -1){
 		      user[30].push(TakenClass);
+          arraynum.push(30);
+        }
+      }else{
+        if (filter_flag === 1){
+          if (user[45].indexOf(TakenClass) == -1){
+            user[45].push(TakenClass);
+            arraynum.push(45);
+          }
+        }
       }
     }
     else if (classtype=="CHEM"){
-      if (user[31].indexOf(TakenClass) == -1)
+      if (user[31].indexOf(TakenClass) == -1){
         user[31].push(TakenClass);
+        arraynum.push(31);
+      }else{
+        if (filter_flag === 1){
+          if (user[45].indexOf(TakenClass) == -1){
+            user[45].push(TakenClass);
+            arraynum.push(45);
+          }
+        }
+      }
     }
     else if ((classtype=="ENGR") && (classnum == 1)){
-      if (user[32].indexOf(TakenClass) == -1)
+      if (user[32].indexOf(TakenClass) == -1){
         user[32].push(TakenClass);
+        arraynum.push(32);
+      }
     }
-    else {
       if (ctw1.indexOf(TakenClass) != -1){
-        if (user[33].indexOf(TakenClass) == -1)
+        if (user[33].indexOf(TakenClass) == -1){
           user[33].push(TakenClass);
+          arraynum.push(33);
+        }
       }
       if (ctw2.indexOf(TakenClass) != -1){
-        if (user[34].indexOf(TakenClass) == -1)
+        if (user[34].indexOf(TakenClass) == -1){
           user[34].push(TakenClass);
+          arraynum.push(34);
+        }
       }
       if (rtc1.indexOf(TakenClass) != -1){
-        if (user[35].indexOf(TakenClass) == -1)
+        if (user[35].indexOf(TakenClass) == -1){
           user[35].push(TakenClass);
+          arraynum.push(35);
+        }
       }
       if (rtc2.indexOf(TakenClass) != -1){
-        if (user[36].indexOf(TakenClass) == -1)
+        if (user[36].indexOf(TakenClass) == -1){
           user[36].push(TakenClass);
+          arraynum.push(36);
+        }
       }
       if (rtc3.indexOf(TakenClass) != -1){
-        if (user[37].indexOf(TakenClass) == -1)
+        if (user[37].indexOf(TakenClass) == -1){
           user[37].push(TakenClass);
+          arraynum.push(37);
+        }
       }
       if (elsj.indexOf(TakenClass) != -1){
-        if (user[38].indexOf(TakenClass) == -1)
+        if (user[38].indexOf(TakenClass) == -1){
           user[38].push(TakenClass);
+          arraynum.push(38);
+        }
       }
       if (ethics.indexOf(TakenClass) != -1){
-        if (user[39].indexOf(TakenClass) == -1)
+        if (user[39].indexOf(TakenClass) == -1){
           user[39].push(TakenClass);
+          arraynum.push(39);
+        }
       }
       if (cni1.indexOf(TakenClass) != -1){
-        if (user[40].indexOf(TakenClass) == -1)
+        if (user[40].indexOf(TakenClass) == -1){
           user[40].push(TakenClass);
+          arraynum.push(40);
+        }
       }
       if (cni2.indexOf(TakenClass) != -1){
-        if (user[41].indexOf(TakenClass) == -1)
+        if (user[41].indexOf(TakenClass) == -1){
           user[41].push(TakenClass);
+          arraynum.push(41);
+        }
       }
       if (cni3.indexOf(TakenClass) != -1){
-        if (user[42].indexOf(TakenClass) == -1)
+        if (user[42].indexOf(TakenClass) == -1){
           user[42].push(TakenClass);
+          arraynum.push(42);
+        }
       }
       if (sosh.indexOf(TakenClass) != -1){
-        if (user[43].indexOf(TakenClass) == -1)
+        if (user[43].indexOf(TakenClass) == -1){
           user[43].push(TakenClass);
+          arraynum.push(43);
+        }
       }
       if (diversity.indexOf(TakenClass) != -1){
-        if (user[44].indexOf(TakenClass) == -1)
+        if (user[44].indexOf(TakenClass) == -1){
           user[44].push(TakenClass);
+          arraynum.push(44);
+        }
       }
-      if (filter_flag == 1){
-        if (user[45].indexOf(TakenClass) == -1)
+      if (filter_flag === 1){
+        if (user[45].indexOf(TakenClass) == -1){
           user[45].push(TakenClass);
+          arraynum.push(45);
+        }
       }
-    }
+
   }
+
+  //alert(user[arraynum].length);
+
+var flag = 0;
+
+for(var i = 0; i < arraynum.length; i++){
+  if (((arraynum[i] != 19) && (user[arraynum[i]].length > 1)) || ((arraynum[i]==19)&&(user[arraynum[i]].length > 3))){
+    flag++;
+    //alert("hi");
+  }
+  //alert(flag + "," + arraynum.length);
+  //alert(flag>i);
+  if ((i == arraynum.length-1) && (flag == arraynum.length)){
+    table = document.getElementById("filteredclassestable");
+  }
+}
+
+
 
 
   var json_user = JSON.stringify(user);
@@ -565,13 +639,51 @@ else{
   createCookie("myArray",json_user,7);
 
 
+  var rowCount = table.rows.length;
+
+  var row = table.insertRow(rowCount);
+
+  row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this,0)">';
+
+
+  if(fulfill_flag==1){
+    row.insertCell(1).innerHTML= TakenClass;
+    row.insertCell(2).innerHTML= fulfill_type[0];
+    row.insertCell(3).innerHTML =fulfill_type[1];
+  }
+  else{
+    row.insertCell(1).innerHTML= TakenClass;
+    row.insertCell(2).innerHTML= TakenClass;
+    row.insertCell(3).innerHTML = fulfill_type[1];
+
+  }
+
+  //row.insertCell(1).innerHTML= TakenClass;
+
+  if (table == document.getElementById("filteredclassestable")){
+    enteredfiltered.push(TakenClass);
+  }
+
+
+
+  alert(json_user);
+
   displayreq();
   return false;
 
 }
 
+function removedup(arr){
+  var dups = {};
+  return arr.filter(function(el) {
+    var hash = el.valueOf();
+    var isDup = dups[hash];
+    dups[hash] = true;
+    return !isDup;
+  });
+}
 
-function deleteRow(obj) {
+function deleteRow(obj,flag) {
 
   var index = obj.parentNode.parentNode.rowIndex;
   var table;
@@ -595,24 +707,109 @@ function deleteRow(obj) {
   }
 
   var temp = table.rows[index].cells[1].innerHTML;
-  table.deleteRow(index);
+  table.deleteRow(index,0);
 
+  //remove it from entered so you can re-enter the course
   if(entered.indexOf(temp) != -1){
     var x = entered.indexOf(temp);
     entered.splice(x,1);
   }
 
+  var tempi = 0;
+
+  //removes the name from the storage cookie
   for(var i = 0; i < 46; i++){
     if(user[i].length!= 0){
       for(var j = 0 ; j < user[i].length; j++){
         if(user[i][j] == temp){
+
+          //remove that specific class
           user[i].splice(j,1);
+          //alert(user[i].length);
+
+          //what class to replace with?
+          //add on the next most recent class
+          if ((user[i].length > 0) && (i != 19) && ((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))){
+
+              filtered.push(user[i][0]);
+              j = user[i].length;
+
+
+
+          //only for electives
+          }else if ((i == 19) && (user[i].length>2) && ((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))){
+
+            filtered.push(user[i][2]);
+            j = user[i].length;
+          }
+
+        //}
         }
       }
     }
   }
+
+  //remove duplicates (i.e. double dip)
+
+
+  //alert(filtered);
+  //alert(nfiltered);
+
+  var nfiltered = removedup(filtered);
+
+  var tempi = nfiltered.length;
+  for (var j = 0; j < tempi; j++){
+  if((flag == 0)&&(tempi != 0)){
+    //alert(filtered);
+
+    var tempval = nfiltered[0];
+
+    var temploc = enteredfiltered.indexOf(tempval);
+    if (temploc != -1){
+      alert("hi");
+
+    //alert(temploc);
+
+    table = document.getElementById("filteredclassestable");
+
+    table.deleteRow(temploc+1,1);
+
+    //lets you re-enter
+    var x = entered.indexOf(tempval);
+    entered.splice(x,1);
+
+    var y = nfiltered.indexOf(tempval);
+    nfiltered.splice(y,1);
+
+    var z = enteredfiltered.indexOf(tempval);
+    enteredfiltered.splice(z,1);
+
+      var json_user = JSON.stringify(user);
+      alert("now " + json_user);
+
+    addRow(tempval);
+
+
+}
+  }
+}
+filtered.length=0;
+nfiltered.length=0;
+  //alert(filtered);
+/*
+  if((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))
+  {
+
+  }
+
+  alert(user);
+*/
+
   var json_user = JSON.stringify(user);
   createCookie("myArray",json_user,7);
+
+  alert("done" + json_user);
+
   displayreq();
 
 }

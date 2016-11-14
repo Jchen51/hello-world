@@ -177,6 +177,7 @@ for(i=0; i<elen.length;i++)
   {
     var table = document.getElementById("majorclassestable");
     filter_flag=0;
+    fulfill_flag=0;
   }
 
 }
@@ -188,6 +189,7 @@ for(i=0; i<writing.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
+        fulfill_flag=0;
     }
 }
 
@@ -198,6 +200,7 @@ for(i=0; i<math.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
+        fulfill_flag=0;
     }
 }
 
@@ -208,6 +211,7 @@ for(i=0; i<sci.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
+        fulfill_flag=0;
     }
 }
 //END MAJOR ARRAYS
@@ -220,6 +224,7 @@ for(i=0; i<civic.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
+        fulfill_flag=0;
     }
 }
 
@@ -229,6 +234,7 @@ for(i=0; i<arts.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
+        fulfill_flag=0;
     }
 }
 
@@ -238,6 +244,7 @@ for(i=0; i<sts.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
+        fulfill_flag=0;
     }
 }
 
@@ -247,7 +254,7 @@ for(i=0; i<ctw1.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="CTW1";
+        fulfill_type.push("CTW1");
     }
 }
 
@@ -655,7 +662,18 @@ for(var i = 0; i < arraynum.length; i++){
   if(fulfill_flag==0){
     row.insertCell(1).innerHTML= TakenClass;
     row.insertCell(2).innerHTML= TakenClass;
-    row.insertCell(3).innerHTML = " ";
+    if(TakenClass=="COEN196"){
+      row.insertCell(3).innerHTML = "ARTS";
+    }else
+    if(TakenClass=="MATH122"){
+      row.insertCell(2).innerHTML="AMTH108";
+    }else
+    if(TakenClass=="ENGL181"){
+      row.insertCell(3).innerHTML="STS";
+    }
+    else{
+      row.insertCell(3).innerHTML = " ";
+    }
   }else
   if(fulfill_type.length == 1){
     row.insertCell(1).innerHTML= TakenClass;

@@ -32,7 +32,7 @@ var filtered=[];
 
 var enteredfiltered=[];
 
-var fulfill_type = [" "," "];
+
 
 var ALL_TYPES = ["COEN10","COEN11","COEN12","COEN19", "COEN20", "COEN21", "COEN70", "COEN122", "COEN146","COEN171", "COEN174", "COEN175", "COEN177", "COEN179", "COEN194", "COEN195", "COEN196","ELEN50","ELEN153","MATH11",
 "MATH12","MATH13","MATH14","MATH122","AMTH106","AMTH108","MATH53","PHYS31","PHYS32","PHYS33","CHEM11", "ENGR1", "CTW1","CTW2","RTC1", "RTC2","RTC3","ELSJ","ETHICS","C&I1", "C&I2","C&I3","SOCSCI","DIV"];
@@ -96,6 +96,7 @@ function listCookies() {
 
 function addRow(rein) {
 
+    var fulfill_type = [];
 
     //var TakenClass = document.getElementById("name");
     //alert(typeof TakenClass);
@@ -166,7 +167,7 @@ for(i=0; i<COEN_UPPERDIV_ELECTIVES.length; i++)
     {
         var table = document.getElementById("majorclassestable");
         filter_flag=0;
-        fulfill_type[0]="COEN UPPERDIV";
+        fulfill_type.push("COEN UPPERDIV");
     }
 }
 
@@ -256,7 +257,7 @@ for(i=0; i<ctw2.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="CTW2";
+        fulfill_type.push("CTW2");
     }
 }
 
@@ -266,7 +267,7 @@ for(i=0; i<rtc1.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="RTC1";
+        fulfill_type.push("RTC1");
     }
 }
 for(i=0; i<rtc2.length; i++)
@@ -275,7 +276,7 @@ for(i=0; i<rtc2.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="RTC2";
+        fulfill_type.push("RTC2");
     }
 }
 
@@ -285,7 +286,7 @@ for(i=0; i<rtc3.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="RTC3";
+        fulfill_type.push("RTC3");
     }
 }
 
@@ -295,7 +296,7 @@ for(i=0; i<elsj.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="ELSJ";
+        fulfill_type.push("ELSJ");
     }
 }
 
@@ -305,7 +306,7 @@ for(i=0; i<ethics.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="ETHICS";
+        fulfill_type.push("ETHICS");
     }
 }
 
@@ -315,7 +316,7 @@ for(i=0; i<cni1.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="C&I1";
+        fulfill_type.push("C&I1");
     }
 }
 
@@ -325,7 +326,7 @@ for(i=0; i<cni2.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="C&I2";
+        fulfill_type.push("C&I2");
     }
 }
 
@@ -335,7 +336,7 @@ for(i=0; i<cni3.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="C&I3";
+        fulfill_type.push("C&I3");
     }
 }
 
@@ -345,15 +346,17 @@ for(i=0; i<sosh.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="SOCSCI";
+        fulfill_type.push("SOCSCI");
 
+
+/*
         if(TakenClass=="POLI140" ||TakenClass=="POLI145" || TakenClass=="POLI2"  ){
         fulfill_type[1]="C&I3";
         }
 
         if(TakenClass=="ANTH3"){
         fulfill_type[1]="ELSJ";
-        }
+      }*/
     }
 }
 
@@ -363,7 +366,7 @@ for(i=0; i<diversity.length; i++)
     {
         var table = document.getElementById("coreclassestable");
         filter_flag=0;
-        fulfill_type[0]="DIV";
+        fulfill_type.push("DIV");
     }
 }
 //END CORE CLASSES
@@ -619,6 +622,7 @@ if(filter_flag==1)
 
 var flag = 0;
 
+if(arraynum!=45){
 for(var i = 0; i < arraynum.length; i++){
   if (((arraynum[i] != 19) && (user[arraynum[i]].length > 1)) || ((arraynum[i]==19)&&(user[arraynum[i]].length > 3))){
     flag++;
@@ -628,7 +632,9 @@ for(var i = 0; i < arraynum.length; i++){
   //alert(flag>i);
   if ((i == arraynum.length-1) && (flag == arraynum.length)){
     table = document.getElementById("filteredclassestable");
+    enteredfiltered.push(TakenClass);
   }
+}
 }
 
 
@@ -646,18 +652,38 @@ for(var i = 0; i < arraynum.length; i++){
   row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this,0)">';
 
 
-  if(fulfill_flag==1){
-    row.insertCell(1).innerHTML= TakenClass;
-    row.insertCell(2).innerHTML= fulfill_type[0];
-    row.insertCell(3).innerHTML =fulfill_type[1];
-  }
-  else{
+  if(fulfill_flag==0){
     row.insertCell(1).innerHTML= TakenClass;
     row.insertCell(2).innerHTML= TakenClass;
-    row.insertCell(3).innerHTML = fulfill_type[1];
-
+    row.insertCell(3).innerHTML = " ";
+  }else
+  if(fulfill_type.length == 1){
+    row.insertCell(1).innerHTML= TakenClass;
+    row.insertCell(2).innerHTML= fulfill_type[0];
+    row.insertCell(3).innerHTML= " ";
+  }else if (fulfill_type.length >= 2){
+    row.insertCell(1).innerHTML=TakenClass;
+    row.insertCell(2).innerHTML= fulfill_type[0];
+    row.insertCell(3).innerHTML= fulfill_type[1];
+  }else{
+    row.insertCell(1).innerHTML=TakenClass;
+    row.insertCell(2).innerHTML="Ask your Advisor";
   }
 
+/*
+  if(fulfill_flag==1){
+    row.insertCell(1).innerHTML= TakenClass;
+    row.insertCell(2).innerHTML= TakenClass;
+    row.insertCell(3).innerHTML =fulfill_type[1];
+  }
+  else
+
+
+  {
+
+
+  }
+*/
   //row.insertCell(1).innerHTML= TakenClass;
 
   if (table == document.getElementById("filteredclassestable")){
@@ -666,7 +692,7 @@ for(var i = 0; i < arraynum.length; i++){
 
 
 
-  alert(json_user);
+  //alert(json_user);
 
   displayreq();
   return false;
@@ -756,6 +782,7 @@ function deleteRow(obj,flag) {
   //alert(nfiltered);
 
   var nfiltered = removedup(filtered);
+  enteredfiltered = removedup(enteredfiltered);
 
   var tempi = nfiltered.length;
   for (var j = 0; j < tempi; j++){
@@ -765,8 +792,9 @@ function deleteRow(obj,flag) {
     var tempval = nfiltered[0];
 
     var temploc = enteredfiltered.indexOf(tempval);
+    //alert(enteredfiltered);
     if (temploc != -1){
-      alert("hi");
+      //alert("hi");
 
     //alert(temploc);
 
@@ -784,8 +812,8 @@ function deleteRow(obj,flag) {
     var z = enteredfiltered.indexOf(tempval);
     enteredfiltered.splice(z,1);
 
-      var json_user = JSON.stringify(user);
-      alert("now " + json_user);
+      //var json_user = JSON.stringify(user);
+      //alert("now " + json_user);
 
     addRow(tempval);
 
@@ -808,7 +836,7 @@ nfiltered.length=0;
   var json_user = JSON.stringify(user);
   createCookie("myArray",json_user,7);
 
-  alert("done" + json_user);
+  //alert("done" + json_user);
 
   displayreq();
 

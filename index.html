@@ -81,14 +81,15 @@ h1 {font-family:Arial;}
 if (document.cookie.indexOf("myArray") >=0){
   alert("Welcome Back");
   var json_user = getCookie("myArray");
-  var user=JSON.parse(json_user);
+  //var user=JSON.parse(json_user);
+  var temp=JSON.parse(json_user);
   for(var i = 0; i < 46; i++){
-    if(user[i].length!= 0){
-      for(var j = 0 ; j < user[i].length; j++){
-        //alert(user[i][j]);
+    if(temp[i].length!= 0){
+      for(var j = 0 ; j < temp[i].length; j++){
+        alert(temp[i][j]);
         //document.getElementById("name").value = user[i][j];
         //alert(document.getElementById("name").value)
-        addRow(user[i][j]);
+        addRow(temp[i][j]);
         //addRow();
       }
     }

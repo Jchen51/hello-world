@@ -346,7 +346,7 @@ if(filter_flag==1)
     entered.push(TakenClass);
 }
 
-  var arraynum = 45;
+  var arraynum = [];
 
     //insert into ARRAY
 
@@ -355,27 +355,28 @@ if(filter_flag==1)
       var x = COEN_MAJOR.indexOf(TakenClass);
       if (user[x].indexOf(TakenClass) == -1){
         user[x].push(TakenClass);
-        arraynum = x;
+        arraynum.push(x);
       }
     }
     else if (elen.indexOf(TakenClass) != -1){
       var x = elen.indexOf(TakenClass);
       if (user[x].indexOf(TakenClass) == -1){
         user[x+17].push(TakenClass);
-        arraynum = x;
+        arraynum.push(x);
       }
     }
     //needs to have 3
     if(COEN_UPPERDIV_ELECTIVES.indexOf(TakenClass) != -1){
       if (user[19].indexOf(TakenClass) == -1){
         user[19].push(TakenClass);
-        arraynum = 19;
+        arraynum.push(19);
       }
     }
     else{
       if (filter_flag === 1){
         if (user[45].indexOf(TakenClass) == -1){
           user[45].push(TakenClass);
+          arraynum.push(45);
         }
       }
     }
@@ -383,50 +384,51 @@ if(filter_flag==1)
     if ((classtype=="ENGL") && (classnum==181)){
       if (user[20].indexOf(TakenClass) == -1){
         user[20].push(TakenClass);
-        arraynum = 20;
+        arraynum.push(20);
       }
     }
     else if (classtype=="MATH"){
       if((classnum==53)||(classnum==166)){
         if (user[27].indexOf(TakenClass) == -1){
           user[27].push(TakenClass);
-          arraynum = 27;
+          arraynum.push(27);
         }
       }
       else if(classnum==122){
         if (user[26].indexOf(TakenClass) == -1){
           user[26].push(TakenClass);
-          arraynum  = 26;
+          arraynum.push(26);
         }
       }
       else if(classnum==11){
         if (user[21].indexOf(TakenClass) == -1){
           user[21].push(TakenClass);
-          arraynum = 21;
+          arraynum.push(21);
         }
       }
 	else if (classnum == 12){
 	if (user[22].indexOf(TakenClass) == -1){
 		user[22].push(TakenClass);
-    arraynum = 22;
+    arraynum.push(22);
   }
 	}
 	else if (classnum == 13){
 	if (user[23].indexOf(TakenClass) == -1){
 		user[23].push(TakenClass);
-    arraynum = 23;
+    arraynum.push(23);
   }
 	}
 	else if (classnum == 14){
 	if (user[24].indexOf(TakenClass) == -1){
 		user[24].push(TakenClass);
-    arraynum = 24;
+    arraynum.push(24);
   }
 	}
   else{
   if (filter_flag === 1){
     if (user[45].indexOf(TakenClass) == -1){
       user[45].push(TakenClass);
+      arraynum.push(45);
     }
   }
 }
@@ -435,24 +437,25 @@ if(filter_flag==1)
       if(classnum==106){
         if (user[25].indexOf(TakenClass) == -1){
           user[25].push(TakenClass);
-          arraynum = 25;
+          arraynum.push(25);
         }
       }
       else if (classnum == 108){
         if (user[26].indexOf(TakenClass) == -1){
           user[26].push(TakenClass);
-          arraynum = 26;
+          arraynum.push(26);
         }
       }
       else if (classnum == 118){
         if (user[27].indexOf(TakenClass) == -1){
           user[27].push(TakenClass);
-          arraynum = 27;
+          arraynum.push(27);
         }
       }else{
         if (filter_flag === 1){
           if (user[45].indexOf(TakenClass) == -1){
             user[45].push(TakenClass);
+            arraynum.push(45);
           }
         }
       }
@@ -461,24 +464,25 @@ if(filter_flag==1)
       if (classnum==31){
 	      if (user[28].indexOf(TakenClass) == -1){
 		      user[28].push(TakenClass);
-          arraynum = 28;
+          arraynum.push(28);
         }
       }else
       if (classnum==32){
 	      if (user[29].indexOf(TakenClass) == -1){
 		      user[29].push(TakenClass);
-          arraynum = 29;
+          arraynum.push(29);
         }
       }else
       if (classnum==33){
 	      if (user[30].indexOf(TakenClass) == -1){
 		      user[30].push(TakenClass);
-          arraynum = 30;
+          arraynum.push(30);
         }
       }else{
         if (filter_flag === 1){
           if (user[45].indexOf(TakenClass) == -1){
             user[45].push(TakenClass);
+            arraynum.push(45);
           }
         }
       }
@@ -486,11 +490,12 @@ if(filter_flag==1)
     else if (classtype=="CHEM"){
       if (user[31].indexOf(TakenClass) == -1){
         user[31].push(TakenClass);
-        arraynum = 31;
+        arraynum.push(31);
       }else{
         if (filter_flag === 1){
           if (user[45].indexOf(TakenClass) == -1){
             user[45].push(TakenClass);
+            arraynum.push(45);
           }
         }
       }
@@ -498,84 +503,85 @@ if(filter_flag==1)
     else if ((classtype=="ENGR") && (classnum == 1)){
       if (user[32].indexOf(TakenClass) == -1){
         user[32].push(TakenClass);
-        arraynum = 32;
+        arraynum.push(32);
       }
     }
       if (ctw1.indexOf(TakenClass) != -1){
         if (user[33].indexOf(TakenClass) == -1){
           user[33].push(TakenClass);
-          arraynum = 33;
+          arraynum.push(33);
         }
       }
       if (ctw2.indexOf(TakenClass) != -1){
         if (user[34].indexOf(TakenClass) == -1){
           user[34].push(TakenClass);
-          arraynum = 34;
+          arraynum.push(34);
         }
       }
       if (rtc1.indexOf(TakenClass) != -1){
         if (user[35].indexOf(TakenClass) == -1){
           user[35].push(TakenClass);
-          arraynum = 35;
+          arraynum.push(35);
         }
       }
       if (rtc2.indexOf(TakenClass) != -1){
         if (user[36].indexOf(TakenClass) == -1){
           user[36].push(TakenClass);
-          arraynum = 36;
+          arraynum.push(36);
         }
       }
       if (rtc3.indexOf(TakenClass) != -1){
         if (user[37].indexOf(TakenClass) == -1){
           user[37].push(TakenClass);
-          arraynum = 37;
+          arraynum.push(37);
         }
       }
       if (elsj.indexOf(TakenClass) != -1){
         if (user[38].indexOf(TakenClass) == -1){
           user[38].push(TakenClass);
-          arraynum = 38;
+          arraynum.push(38);
         }
       }
       if (ethics.indexOf(TakenClass) != -1){
         if (user[39].indexOf(TakenClass) == -1){
           user[39].push(TakenClass);
-          arraynum = 39;
+          arraynum.push(39);
         }
       }
       if (cni1.indexOf(TakenClass) != -1){
         if (user[40].indexOf(TakenClass) == -1){
           user[40].push(TakenClass);
-          arraynum = 40;
+          arraynum.push(40);
         }
       }
       if (cni2.indexOf(TakenClass) != -1){
         if (user[41].indexOf(TakenClass) == -1){
           user[41].push(TakenClass);
-          arraynum = 41;
+          arraynum.push(41);
         }
       }
       if (cni3.indexOf(TakenClass) != -1){
         if (user[42].indexOf(TakenClass) == -1){
           user[42].push(TakenClass);
-          arraynum = 42;
+          arraynum.push(42);
         }
       }
       if (sosh.indexOf(TakenClass) != -1){
         if (user[43].indexOf(TakenClass) == -1){
           user[43].push(TakenClass);
-          arraynum = 43;
+          arraynum.push(43);
         }
       }
       if (diversity.indexOf(TakenClass) != -1){
         if (user[44].indexOf(TakenClass) == -1){
           user[44].push(TakenClass);
-          arraynum = 44;
+          arraynum.push(44);
         }
       }
       if (filter_flag === 1){
         if (user[45].indexOf(TakenClass) == -1){
           user[45].push(TakenClass);
+          arraynum.push(45);
         }
       }
 
@@ -583,9 +589,21 @@ if(filter_flag==1)
 
   //alert(user[arraynum].length);
 
-  if (((arraynum != 19) && (user[arraynum].length > 1)) || ((arraynum==19)&&(user[arraynum].length > 3))){
+var flag = 0;
+
+for(var i = 0; i < arraynum.length; i++){
+  if (((arraynum[i] != 19) && (user[arraynum[i]].length > 1)) || ((arraynum[i]==19)&&(user[arraynum[i]].length > 3))){
+    flag++;
+    //alert("hi");
+  }
+  //alert(flag + "," + arraynum.length);
+  //alert(flag>i);
+  if ((i == arraynum.length-1) && (flag == arraynum.length)){
     table = document.getElementById("filteredclassestable");
   }
+}
+
+
 
 
   var json_user = JSON.stringify(user);
@@ -670,13 +688,14 @@ function deleteRow(obj,flag) {
 
           //what class to replace with?
           //add on the next most recent class
-          //if (flag == 1){
           if ((user[i].length > 0) && (i != 19) && ((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))){
-            tempi = tempi+1;
+
               filtered.push(user[i][0]);
               j = user[i].length;
 
 
+
+          //only for electives
           }else if ((i == 19) && (user[i].length>2) && ((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))){
 
             filtered.push(user[i][2]);
@@ -696,36 +715,45 @@ function deleteRow(obj,flag) {
   //alert(nfiltered);
 
   var nfiltered = removedup(filtered);
+
   var tempi = nfiltered.length;
   for (var j = 0; j < tempi; j++){
-  if((flag == 0)&&(filtered.length != 0)){
-    alert(filtered);
-
+  if((flag == 0)&&(tempi != 0)){
+    //alert(filtered);
 
     var tempval = nfiltered[0];
 
-    //for(var i = 0; i < )
-
     var temploc = enteredfiltered.indexOf(tempval);
-    alert(temploc);
+    if (temploc != -1){
+      alert("hi");
+
+    //alert(temploc);
 
     table = document.getElementById("filteredclassestable");
 
     table.deleteRow(temploc+1,1);
+
+    //lets you re-enter
     var x = entered.indexOf(tempval);
     entered.splice(x,1);
 
-    addRow(tempval);
-
-    var y = filtered.indexOf(tempval);
-    filtered.splice(y,1);
+    var y = nfiltered.indexOf(tempval);
+    nfiltered.splice(y,1);
 
     var z = enteredfiltered.indexOf(tempval);
     enteredfiltered.splice(z,1);
 
+      var json_user = JSON.stringify(user);
+      alert("now " + json_user);
+
+    addRow(tempval);
+
+
+}
   }
 }
 filtered.length=0;
+nfiltered.length=0;
   //alert(filtered);
 /*
   if((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))
@@ -739,7 +767,7 @@ filtered.length=0;
   var json_user = JSON.stringify(user);
   createCookie("myArray",json_user,7);
 
-  alert(json_user);
+  alert("done" + json_user);
 
   displayreq();
 

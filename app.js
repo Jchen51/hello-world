@@ -22,7 +22,16 @@ var cni3=["ANTH50","ANTH152","ANTH156","ANTH172","ANTH181","ANTH184","ANTH185","
 var sosh=["ANTH2","ANTH3","ANTH196","CLAS172","ECON1","ECON1E","ECON2","ECON129BF","HIST107","LBST100","POLI2","POLI40","POLI99","POLI134","POLI140","POLI143","POLI145","PSYC1","PSYC2","SOCI1"];
 var diversity=["ANTH146","ANTH148","ANTH149","ANTH157","ANTH170","ARTH140","ARTH143","ARTH146","ARTH185","COMM107A","COMM121A","COMM164A","COMM168A","DANC62","DANC162","DANC66","DANC166","ECON166","ENGL31G","ENGL35","ENGL35G","ENGL36","ENGL38","ENGL39","ENGL67","ENGL68","ENGL69","ENGL79G","ENGL122","ENGL122AW","ENGL125","ENGL129","ENGL132G","ENGL135","ENGL136","ENGL138","ENGL152","ETHN5","ETHN10","ETHN20","ETHN30","ETHN35","ETHN36","ETHN40","ETHN41","ETHN50","ETHN51","ETHN65","ETHN70","ETHN95","ETHN96","ETHN120","ETHN123","ETHN125","ETHN130","ETHN132","ETHN134","ETHN135","ETHN139","ETHN141","ETHN142","ETHN144","ETHN145","ETHN149","ETHN152","ETHN153","ETHN154","ETHN155","ETHN156","ETHN157","ETHN160","ETHN161","ETHN162","ETHN163","ETHN165","ETHN178","HIST84","HIST153","HIST156A","HIST156B","HIST158","HIST172","HIST177","HIST178","HIST180","HIST181","HIST182","HIST183","HIST185","HIST187","HIST188S","ITAL185","LEAD10","LBST106","MUSC20","MUSC132","MUSC134","MUSC196","PHIL70","PHIL156","POLI134","POLI153","POLI154","POLI171","POLI195DW","PSYC156","PSYC182","PSYC189","PSYC196","SOCI33","SOCI150","SOCI153","SOCI162","SOCI175","SOCI180","SPAN176","THTR65","THTR151","THTR161","TESP65","WGST14","WGST15","WGST34","WGST50","WGST51","WGST56","WGST57","WGST101","WGST110","WGST111","WGST112","WGST113","WGST114","WGST115","WGST116","WGST117","WGST118","WGST134","WGST134AW","WGST136","WGST138","WGST144","WGST155","WGST156","WGST163","WGST164","WGST173","WGST174","WGST180","WGST188"];
 
+//var filtered=["DANC50"];
+
+var filler=[""];
+
 var entered=[];
+
+var filtered=[];
+
+var enteredfiltered=[];
+
 
 //var user = new Array(43+1).join('0').split('').map(parseFloat);
 
@@ -82,6 +91,7 @@ function listCookies() {
 
 function addRow(rein) {
 
+
     //var TakenClass = document.getElementById("name");
     //alert(typeof TakenClass);
     var i,filter_flag;
@@ -94,6 +104,9 @@ function addRow(rein) {
     else{
       var userInput = rein;
     }
+
+    //pre-sanatize inputs
+    userInput = userInput.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
 
     //turn everything into 4char1-3int format
 
@@ -108,23 +121,24 @@ function addRow(rein) {
       entered.push(TakenClass);
     }
 
-    //is it too long?
-    if ((TakenClass.length > 7) || (TakenClass.length < 5)){
-      alert("Invalid entry");
+    var pattern = /^[a-zA-Z]{4}\d{1,3}[a-zA-Z]{0,2}$/;
+
+    if (!(pattern.test(TakenClass))){
+      alert("Invalid Entry");
       return false;
     }
 
+    //alert(TakenClass);
+
     //is it an invalid class?
-    var re = /\w{4}/;
-    //var re = /[a-zA-Z]+/;
+    var re = /[a-zA-Z]{4}/;
 
     //which department is it?
     var classtype = TakenClass.match(re);
-    //alert(classtype);
     classtype = classtype.toString();
 
     //which course number?
-    var re2 = /\d+[\w{1}]*/;
+    var re2 = /\d{1,3}[a-zA-Z]{0,2}/;
     var classnum = TakenClass.match(re2);
 
 
@@ -329,162 +343,248 @@ for(i=0; i<diversity.length; i++)
 if(filter_flag==1)
 {
     var table = document.getElementById("filteredclassestable");
+    entered.push(TakenClass);
 }
 
-
-
-    var rowCount = table.rows.length;
-
-    var row = table.insertRow(rowCount);
-
-    row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
-
-    //CASES SEARCH THROUGH ARRAY
-    row.insertCell(1).innerHTML= TakenClass;
-
-
-
+  var arraynum = 45;
 
     //insert into ARRAY
-
 
   if((classtype=="COEN") || (classtype=="ELEN")){
     if(COEN_MAJOR.indexOf(TakenClass) != -1){
       var x = COEN_MAJOR.indexOf(TakenClass);
-      if (user[x].indexOf(TakenClass) == -1)
+      if (user[x].indexOf(TakenClass) == -1){
         user[x].push(TakenClass);
+        arraynum = x;
+      }
     }
     else if (elen.indexOf(TakenClass) != -1){
       var x = elen.indexOf(TakenClass);
-      if (user[x].indexOf(TakenClass) == -1)
+      if (user[x].indexOf(TakenClass) == -1){
         user[x+17].push(TakenClass);
+        arraynum = x;
+      }
     }
     //needs to have 3
-    else if(COEN_UPPERDIV_ELECTIVES.indexOf(TakenClass) != -1){
-      if (user[19].indexOf(TakenClass) == -1)
+    if(COEN_UPPERDIV_ELECTIVES.indexOf(TakenClass) != -1){
+      if (user[19].indexOf(TakenClass) == -1){
         user[19].push(TakenClass);
+        arraynum = 19;
+      }
+    }
+    else{
+      if (filter_flag === 1){
+        if (user[45].indexOf(TakenClass) == -1){
+          user[45].push(TakenClass);
+        }
+      }
     }
   }else {
     if ((classtype=="ENGL") && (classnum==181)){
-      if (user[20].indexOf(TakenClass) == -1)
+      if (user[20].indexOf(TakenClass) == -1){
         user[20].push(TakenClass);
+        arraynum = 20;
+      }
     }
     else if (classtype=="MATH"){
       if((classnum==53)||(classnum==166)){
-        if (user[27].indexOf(TakenClass) == -1)
+        if (user[27].indexOf(TakenClass) == -1){
           user[27].push(TakenClass);
+          arraynum = 27;
+        }
       }
       else if(classnum==122){
-        if (user[26].indexOf(TakenClass) == -1)
+        if (user[26].indexOf(TakenClass) == -1){
           user[26].push(TakenClass);
+          arraynum  = 26;
+        }
       }
       else if(classnum==11){
-        if (user[21].indexOf(TakenClass) == -1)
+        if (user[21].indexOf(TakenClass) == -1){
           user[21].push(TakenClass);
+          arraynum = 21;
+        }
       }
 	else if (classnum == 12){
-	if (user[22].indexOf(TakenClass) == -1)
+	if (user[22].indexOf(TakenClass) == -1){
 		user[22].push(TakenClass);
+    arraynum = 22;
+  }
 	}
 	else if (classnum == 13){
-	if (user[23].indexOf(TakenClass) == -1)
+	if (user[23].indexOf(TakenClass) == -1){
 		user[23].push(TakenClass);
+    arraynum = 23;
+  }
 	}
 	else if (classnum == 14){
-	if (user[24].indexOf(TakenClass) == -1)
+	if (user[24].indexOf(TakenClass) == -1){
 		user[24].push(TakenClass);
+    arraynum = 24;
+  }
 	}
+  else{
+  if (filter_flag === 1){
+    if (user[45].indexOf(TakenClass) == -1){
+      user[45].push(TakenClass);
+    }
+  }
+}
     }
     else if (classtype=="AMTH"){
       if(classnum==106){
-        if (user[25].indexOf(TakenClass) == -1)
+        if (user[25].indexOf(TakenClass) == -1){
           user[25].push(TakenClass);
+          arraynum = 25;
+        }
       }
       else if (classnum == 108){
-        if (user[26].indexOf(TakenClass) == -1)
+        if (user[26].indexOf(TakenClass) == -1){
           user[26].push(TakenClass);
+          arraynum = 26;
+        }
       }
       else if (classnum == 118){
-        if (user[27].indexOf(TakenClass) == -1)
+        if (user[27].indexOf(TakenClass) == -1){
           user[27].push(TakenClass);
+          arraynum = 27;
+        }
+      }else{
+        if (filter_flag === 1){
+          if (user[45].indexOf(TakenClass) == -1){
+            user[45].push(TakenClass);
+          }
+        }
       }
     }
     else if (classtype=="PHYS"){
       if (classnum==31){
-	      if (user[28].indexOf(TakenClass) == -1)
+	      if (user[28].indexOf(TakenClass) == -1){
 		      user[28].push(TakenClass);
-      }
+          arraynum = 28;
+        }
+      }else
       if (classnum==32){
-	      if (user[29].indexOf(TakenClass) == -1)
+	      if (user[29].indexOf(TakenClass) == -1){
 		      user[29].push(TakenClass);
-      }
+          arraynum = 29;
+        }
+      }else
       if (classnum==33){
-	      if (user[30].indexOf(TakenClass) == -1)
+	      if (user[30].indexOf(TakenClass) == -1){
 		      user[30].push(TakenClass);
+          arraynum = 30;
+        }
+      }else{
+        if (filter_flag === 1){
+          if (user[45].indexOf(TakenClass) == -1){
+            user[45].push(TakenClass);
+          }
+        }
       }
     }
     else if (classtype=="CHEM"){
-      if (user[31].indexOf(TakenClass) == -1)
+      if (user[31].indexOf(TakenClass) == -1){
         user[31].push(TakenClass);
+        arraynum = 31;
+      }else{
+        if (filter_flag === 1){
+          if (user[45].indexOf(TakenClass) == -1){
+            user[45].push(TakenClass);
+          }
+        }
+      }
     }
     else if ((classtype=="ENGR") && (classnum == 1)){
-      if (user[32].indexOf(TakenClass) == -1)
+      if (user[32].indexOf(TakenClass) == -1){
         user[32].push(TakenClass);
+        arraynum = 32;
+      }
     }
-    else {
       if (ctw1.indexOf(TakenClass) != -1){
-        if (user[33].indexOf(TakenClass) == -1)
+        if (user[33].indexOf(TakenClass) == -1){
           user[33].push(TakenClass);
+          arraynum = 33;
+        }
       }
       if (ctw2.indexOf(TakenClass) != -1){
-        if (user[34].indexOf(TakenClass) == -1)
+        if (user[34].indexOf(TakenClass) == -1){
           user[34].push(TakenClass);
+          arraynum = 34;
+        }
       }
       if (rtc1.indexOf(TakenClass) != -1){
-        if (user[35].indexOf(TakenClass) == -1)
+        if (user[35].indexOf(TakenClass) == -1){
           user[35].push(TakenClass);
+          arraynum = 35;
+        }
       }
       if (rtc2.indexOf(TakenClass) != -1){
-        if (user[36].indexOf(TakenClass) == -1)
+        if (user[36].indexOf(TakenClass) == -1){
           user[36].push(TakenClass);
+          arraynum = 36;
+        }
       }
       if (rtc3.indexOf(TakenClass) != -1){
-        if (user[37].indexOf(TakenClass) == -1)
+        if (user[37].indexOf(TakenClass) == -1){
           user[37].push(TakenClass);
+          arraynum = 37;
+        }
       }
       if (elsj.indexOf(TakenClass) != -1){
-        if (user[38].indexOf(TakenClass) == -1)
+        if (user[38].indexOf(TakenClass) == -1){
           user[38].push(TakenClass);
+          arraynum = 38;
+        }
       }
       if (ethics.indexOf(TakenClass) != -1){
-        if (user[39].indexOf(TakenClass) == -1)
+        if (user[39].indexOf(TakenClass) == -1){
           user[39].push(TakenClass);
+          arraynum = 39;
+        }
       }
       if (cni1.indexOf(TakenClass) != -1){
-        if (user[40].indexOf(TakenClass) == -1)
+        if (user[40].indexOf(TakenClass) == -1){
           user[40].push(TakenClass);
+          arraynum = 40;
+        }
       }
       if (cni2.indexOf(TakenClass) != -1){
-        if (user[41].indexOf(TakenClass) == -1)
+        if (user[41].indexOf(TakenClass) == -1){
           user[41].push(TakenClass);
+          arraynum = 41;
+        }
       }
       if (cni3.indexOf(TakenClass) != -1){
-        if (user[42].indexOf(TakenClass) == -1)
+        if (user[42].indexOf(TakenClass) == -1){
           user[42].push(TakenClass);
+          arraynum = 42;
+        }
       }
       if (sosh.indexOf(TakenClass) != -1){
-        if (user[43].indexOf(TakenClass) == -1)
+        if (user[43].indexOf(TakenClass) == -1){
           user[43].push(TakenClass);
+          arraynum = 43;
+        }
       }
       if (diversity.indexOf(TakenClass) != -1){
-        if (user[44].indexOf(TakenClass) == -1)
+        if (user[44].indexOf(TakenClass) == -1){
           user[44].push(TakenClass);
+          arraynum = 44;
+        }
       }
-      if (filter_flag == 1){
-        if (user[45].indexOf(TakenClass) == -1)
+      if (filter_flag === 1){
+        if (user[45].indexOf(TakenClass) == -1){
           user[45].push(TakenClass);
+        }
       }
-    }
+
+  }
+
+  //alert(user[arraynum].length);
+
+  if (((arraynum != 19) && (user[arraynum].length > 1)) || ((arraynum==19)&&(user[arraynum].length > 3))){
+    table = document.getElementById("filteredclassestable");
   }
 
 
@@ -493,13 +593,38 @@ if(filter_flag==1)
   createCookie("myArray",json_user,7);
 
 
+  var rowCount = table.rows.length;
+
+  var row = table.insertRow(rowCount);
+
+  row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this,0)">';
+
+  row.insertCell(1).innerHTML= TakenClass;
+
+  if (table == document.getElementById("filteredclassestable")){
+    enteredfiltered.push(TakenClass);
+  }
+
+
+
+  alert(json_user);
+
   displayreq();
   return false;
 
 }
 
+function removedup(arr){
+  var dups = {};
+  return arr.filter(function(el) {
+    var hash = el.valueOf();
+    var isDup = dups[hash];
+    dups[hash] = true;
+    return !isDup;
+  });
+}
 
-function deleteRow(obj) {
+function deleteRow(obj,flag) {
 
   var index = obj.parentNode.parentNode.rowIndex;
   var table;
@@ -523,24 +648,99 @@ function deleteRow(obj) {
   }
 
   var temp = table.rows[index].cells[1].innerHTML;
-  table.deleteRow(index);
-    
+  table.deleteRow(index,0);
+
+  //remove it from entered so you can re-enter the course
   if(entered.indexOf(temp) != -1){
     var x = entered.indexOf(temp);
     entered.splice(x,1);
   }
 
+  var tempi = 0;
+
+  //removes the name from the storage cookie
   for(var i = 0; i < 46; i++){
     if(user[i].length!= 0){
       for(var j = 0 ; j < user[i].length; j++){
         if(user[i][j] == temp){
+
+          //remove that specific class
           user[i].splice(j,1);
+          //alert(user[i].length);
+
+          //what class to replace with?
+          //add on the next most recent class
+          //if (flag == 1){
+          if ((user[i].length > 0) && (i != 19) && ((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))){
+            tempi = tempi+1;
+              filtered.push(user[i][0]);
+              j = user[i].length;
+
+
+          }else if ((i == 19) && (user[i].length>2) && ((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))){
+
+            filtered.push(user[i][2]);
+            j = user[i].length;
+          }
+
+        //}
         }
       }
     }
   }
+
+  //remove duplicates (i.e. double dip)
+
+
+  //alert(filtered);
+  //alert(nfiltered);
+
+  var nfiltered = removedup(filtered);
+  var tempi = nfiltered.length;
+  for (var j = 0; j < tempi; j++){
+  if((flag == 0)&&(filtered.length != 0)){
+    alert(filtered);
+
+
+    var tempval = nfiltered[0];
+
+    //for(var i = 0; i < )
+
+    var temploc = enteredfiltered.indexOf(tempval);
+    alert(temploc);
+
+    table = document.getElementById("filteredclassestable");
+
+    table.deleteRow(temploc+1,1);
+    var x = entered.indexOf(tempval);
+    entered.splice(x,1);
+
+    addRow(tempval);
+
+    var y = filtered.indexOf(tempval);
+    filtered.splice(y,1);
+
+    var z = enteredfiltered.indexOf(tempval);
+    enteredfiltered.splice(z,1);
+
+  }
+}
+filtered.length=0;
+  //alert(filtered);
+/*
+  if((table == document.getElementById("coreclassestable")) || (table == document.getElementById("majorclassestable")))
+  {
+
+  }
+
+  alert(user);
+*/
+
   var json_user = JSON.stringify(user);
   createCookie("myArray",json_user,7);
+
+  alert(json_user);
+
   displayreq();
 
 }

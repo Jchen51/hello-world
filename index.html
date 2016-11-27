@@ -4,8 +4,8 @@
 <head>
     <title>GradTrak</title>
     <!--This is to load other JAVASCRIPT-->
-    <script type="text/javascript" scr="config.js"></script>
-    <script type="text/javascript" src="app.js"></script> 
+  <!--<script type="text/javascript" scr="config.js"></script>-->
+    <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <style>
@@ -13,22 +13,27 @@ body {background-color:powderblue;}
 h1 {font-family:Arial;}
 </style>
 
-<body onload="load()">
+<!-- #AC964D -->
+
+<body>
 <div id="myform">
 <h1 style ="font-family:Arial"><center>GradTrak</center></h1>
-<center><form>
-        Input Classes Taken:
+<center><form onsubmit="return addRow(0);">
+        Input Classes Taken: <br>
+        <small><small>e.g. COEN 10, COEN10</small></small><br><br>
         <input type="text" id="name">
-        <input type="button" id="add" value="Add" onclick="Javascript:addRow()"></td>
+        <input type="button" id="add" value="Add" onclick="Javascript:addRow(0)"></td>
 </form></center>
 </div>
 
 <!--BEGIN: MAJOR CLASSES TABLE-->
 <div id="MajorClasses">
-<table id="majorclassestable" width="33%" border="1" cellpadding="2" style="float:left;">
+<table id="majorclassestable" border="1" cellpadding="2">
     <tr>
-        <td>&nbsp;</td>
-        <td><b>MAJOR CLASSES</b></td>
+        <td width="100">&nbsp;</td>
+        <td width="100"><b>MAJOR CLASSES</b></td>
+        <td width="100"><b>FULFILLS</b></td>
+        <td width="100"><b>FULFILLS</b></td>
     </tr>
 </table>
 &nbsp;<br/>
@@ -37,10 +42,12 @@ h1 {font-family:Arial;}
 
 <!--BEGIN: CORE CLASSES TABLE-->
 <div id="CoreClassesData">
-<table id="coreclassestable" width="33%" border="1" cellpadding="2" style="float:left;">
+<table id="coreclassestable" border="1" cellpadding="2">
     <tr>
-        <td>&nbsp;</td>
-        <td><b>CORE CLASSES</b></td>
+        <td width="100">&nbsp;</td>
+        <td width="100"><b>CORE CLASSES</b></td>
+        <td width="100"><b>FULFILLS</b></td>
+        <td width="100"><b>FULFILLS</b></td>
     </tr>
 </table>
 &nbsp;<br/>
@@ -49,21 +56,59 @@ h1 {font-family:Arial;}
 
 <!--BEGIN: FILTERED CLASSES-->
 <div id="FilteredClassesData">
-<table id="filteredclassestable" width="33%" border="1" cellpadding="2" style="float:left;">
+<table id="filteredclassestable" border="1" cellpadding="2">
     <tr>
-        <td>&nbsp;</td>
-        <td><b>FILTERED CLASSES</b></td>
+        <td width="100">&nbsp;</td>
+        <td width="100"><b>FILTERED CLASSES</b></td>
+        <td width="100"><b>FULFILLS</b></td>
+        <td width="100"><b>FULFILLS</b></td>
     </tr>
 </table>
 &nbsp;<br/>
 </div>
 <!--END: FILTERED CLASSES-->
 
+<div id="Final Requirements" style="position:absolute;top: 104px; right: 120px; border:1px solid green;">
 
 
+  <big><u>You still must fulfill:</u></big><br>
+  <table id="finalreq">
+    <script>
+    if(user==null){
+      var user = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+    }
+    displayreq();
+  </script>
+  </table>
+</div>
 
+<script>
+if (document.cookie.indexOf("myArray") >=0){
+  alert("Welcome Back");
+  var json_user = getCookie("myArray");
+  //var user=JSON.parse(json_user);
+  var temp=JSON.parse(json_user);
+  for(var i = 0; i < 46; i++){
+    if(temp[i].length!= 0){
+      for(var j = 0 ; j < temp[i].length; j++){
+        //alert(temp[i][j]);
+        //document.getElementById("name").value = user[i][j];
+        //alert(document.getElementById("name").value)
+        addRow(temp[i][j]);
+        //addRow();
+      }
+    }
+  }
+}else {
+  var user = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+}
+</script>
 
 
 
 </body>
 </html>
+
+<script>
+
+</script>
